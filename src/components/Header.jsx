@@ -5,7 +5,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <a href="/" className="flex items-center group">
             <img
-              src="/stratablue-logo.png"
+              src="/test/stratablue-logo.png"
               alt="StrataBlue"
               className="h-12 transition-all duration-300 group-hover:scale-105"
               style={{filter: 'drop-shadow(0 0 20px rgba(0, 171, 226, 0.3))'}}
