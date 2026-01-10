@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -24,15 +24,55 @@
 
 @layer base {
   body {
-    @apply font-sans text-slate-600 antialiased;
+    @apply font-sans text-slate-400 antialiased bg-[#030712];
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-slate-900 font-semibold tracking-tight;
+    @apply font-display text-white font-semibold tracking-tight;
   }
 }
 
 @layer components {
+  /* Dark Aurora Background */
+  .aurora-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: #030712;
+    z-index: -1;
+  }
+
+  .aurora-bg::before,
+  .aurora-bg::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 171, 226, 0.15) 0%,
+      transparent 50%
+    );
+    animation: aurora 15s ease-in-out infinite alternate;
+  }
+
+  .aurora-bg::before {
+    top: -50%;
+    left: -25%;
+    animation-delay: 0s;
+  }
+
+  .aurora-bg::after {
+    bottom: -50%;
+    right: -25%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(16, 86, 101, 0.2) 0%,
+      transparent 50%
+    );
+    animation-delay: -7s;
+  }
+
   /* Animated Background Effects */
   .hero-beams {
     position: absolute;
@@ -174,21 +214,35 @@
 
   /* Glass Morphism Card */
   .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-
-  .glass-card-dark {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card-dark {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-glow {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .glass-glow:hover {
+    border-color: rgba(0, 171, 226, 0.3);
+    box-shadow: 0 0 30px rgba(0, 171, 226, 0.2);
   }
 
   /* Mesh Gradient Background */
