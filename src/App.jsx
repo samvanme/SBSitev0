@@ -1,3 +1,4 @@
+import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VoiceDemo from './components/VoiceDemo';
@@ -9,7 +10,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
+    <ErrorBoundary>
       {/* Aurora Background */}
       <div className="aurora-bg"></div>
 
@@ -27,7 +28,7 @@ function App() {
         <FinalCTA />
         <Footer />
       </div>
-    </>
+    </ErrorBoundary>
   );
 }
 
