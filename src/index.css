@@ -300,6 +300,25 @@
     box-shadow: 2px 2px 0 theme('colors.brand.blue');
     transform: translate(2px, 2px);
   }
+
+  /* Brutalist borders */
+  .border-brutal {
+    @apply border-2 border-white;
+  }
+  .border-brutal-thick {
+    @apply border-3 border-white;
+  }
+  .border-brutal-accent {
+    @apply border-2 border-brand-blue;
+  }
+
+  /* Brutalist dividers - solid, not gradient */
+  .divider-brutal {
+    @apply h-0.5 bg-white/20;
+  }
+  .divider-brutal-vertical {
+    @apply w-0.5 bg-white/20;
+  }
 }
 
 @keyframes rotate-beams {

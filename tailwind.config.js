@@ -18,6 +18,10 @@ export default {
         display: ['Darker Grotesque', 'Space Grotesk', 'system-ui', 'sans-serif'],
         mono: ['IBM Plex Mono', 'ui-monospace', 'monospace'],
       },
+      borderWidth: {
+        '3': '3px',
+        '4': '4px',
+      },
       animation: {
         'aurora': 'aurora 15s ease-in-out infinite alternate',
         'float': 'float 20s ease-in-out infinite',
