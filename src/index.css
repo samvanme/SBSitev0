@@ -255,28 +255,6 @@
       radial-gradient(at 50% 50%, rgba(0, 171, 226, 0.05) 0px, transparent 50%);
   }
 
-  /* Stronger Shadow Depth */
-  .shadow-brutal {
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 12px 24px rgba(0, 0, 0, 0.08),
-      0 24px 48px rgba(0, 0, 0, 0.12);
-  }
-
-  .shadow-brutal-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .shadow-brutal-hover:hover {
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 4px 8px rgba(0, 0, 0, 0.06),
-      0 16px 32px rgba(0, 0, 0, 0.12),
-      0 32px 64px rgba(0, 171, 226, 0.15);
-    transform: translateY(-2px);
-  }
-
   /* Grain Effect for Dark Sections */
   .grain-dark::after {
     content: '';
@@ -286,6 +264,41 @@
     pointer-events: none;
     mix-blend-mode: overlay;
     z-index: 1;
+  }
+}
+
+@layer utilities {
+  /* Brutalist hard shadows - offset, no blur */
+  .shadow-brutal-sm {
+    box-shadow: 2px 2px 0 theme('colors.brand.blue');
+  }
+  .shadow-brutal {
+    box-shadow: 4px 4px 0 theme('colors.brand.blue');
+  }
+  .shadow-brutal-lg {
+    box-shadow: 6px 6px 0 theme('colors.brand.blue');
+  }
+
+  /* White border shadows for dark backgrounds */
+  .shadow-brutal-white-sm {
+    box-shadow: 2px 2px 0 rgba(255, 255, 255, 0.9);
+  }
+  .shadow-brutal-white {
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Hover states - shadow grows */
+  .hover\:shadow-brutal:hover {
+    box-shadow: 6px 6px 0 theme('colors.brand.blue');
+  }
+  .hover\:shadow-brutal-lg:hover {
+    box-shadow: 8px 8px 0 theme('colors.brand.blue');
+  }
+
+  /* Active/pressed - shadow shrinks */
+  .active\:shadow-brutal-sm:active {
+    box-shadow: 2px 2px 0 theme('colors.brand.blue');
+    transform: translate(2px, 2px);
   }
 }
 
