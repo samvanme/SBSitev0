@@ -11,8 +11,8 @@
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Foundation & Cleanup | ✅ Complete |
-| 2 | Design System | ⏳ Pending |
-| 3 | Section Redesign | ⏳ Pending |
+| 2 | Design System | 📋 Planned |
+| 3 | Section Redesign | 📋 Planned |
 | 4 | Animation & State System | ⏳ Pending |
 | 5 | AI Demo Integration | ⏳ Pending |
 | 6 | Content & Lead Flow | ⏳ Pending |
@@ -43,6 +43,8 @@ None
 
 ### Session History
 - 2026-01-11: Phase 1 executed (8 tasks, 7 commits)
+- 2026-01-11: Phase 2 planned (14 tasks, 1 plan)
+- 2026-01-11: Phase 3 planned (large scope split into 3 plans)
 
 ---
 *Last updated: 2026-01-11*
