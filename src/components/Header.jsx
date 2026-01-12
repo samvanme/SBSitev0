@@ -7,7 +7,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <a href="/" className="flex items-center">
             <img
-              src="/test/stratablue-logo.png"
+              src={`${import.meta.env.BASE_URL}stratablue-logo-white.png`}
               alt="StrataBlue"
               className="h-12"
             />
