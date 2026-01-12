@@ -3,61 +3,31 @@ import { CONTACT } from '../constants/config';
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+      {/* Grid overlay - stark brutalist grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
-      {/* Static radial gradient - subtle */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(0,171,226,0.08)_0%,transparent_70%)]"></div>
-
-      <div className="container-brutal relative z-10 py-24 lg:py-32">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Overline - brutalist style */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 border-2 border-white/20 mb-8">
+      <div className="container-brutal relative z-10 py-20 lg:py-28">
+        <div className="max-w-4xl">
+          {/* Overline - minimal brutalist */}
+          <div className="inline-flex items-center gap-3 mb-8">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
             </span>
-            <span className="text-overline">
-              Production AI Systems
-            </span>
+            <span className="text-overline">Production AI Systems</span>
           </div>
 
-          {/* Headline - brutalist typography, no glow */}
-          <h1 className="text-display-lg text-white mb-6">
-            AI Systems for <span className="text-brand-blue">Revenue & Service</span> Operations
+          {/* Headline - maximum impact */}
+          <h1 className="text-display-xl text-white mb-8">
+            AI That <span className="text-brand-blue">Works</span><br />
+            Inside Your CRM
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-body-lg mb-4 max-w-3xl mx-auto">
-            Integrated. Governed. Measured.
+          {/* Single strong subheadline */}
+          <p className="text-body-lg mb-12 max-w-2xl">
+            Voice agents for revenue and service operations.
+            Integrated with your systems. Measured in your dashboards.
           </p>
-          <p className="text-body mb-12 max-w-2xl mx-auto">
-            Install AI voice agents inside your CRM and service platforms for consistent, controlled, and measurable operations.
-          </p>
-
-          {/* Stats Row - high contrast, no shadows */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-12 text-sm">
-            <div className="flex flex-col items-center">
-              <div className="text-heading-sm text-white font-black mb-1">
-                $680K
-              </div>
-              <div className="text-mono text-slate-500 uppercase">Revenue Influence</div>
-            </div>
-            <div className="hidden sm:block divider-brutal-vertical h-12"></div>
-            <div className="flex flex-col items-center">
-              <div className="text-heading-sm text-white font-black mb-1">
-                45 Days
-              </div>
-              <div className="text-mono text-slate-500 uppercase">Measured in CRM</div>
-            </div>
-            <div className="hidden sm:block divider-brutal-vertical h-12"></div>
-            <div className="flex flex-col items-center">
-              <div className="text-heading-sm text-white font-black mb-1">
-                $300K
-              </div>
-              <div className="text-mono text-slate-500 uppercase">Recovered Revenue</div>
-            </div>
-          </div>
 
           {/* CTA Buttons - brutalist style */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
