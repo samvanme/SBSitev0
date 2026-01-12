@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
 import { CONTACT } from '../constants/config';
 import { Waveform, ThinkingState, StateTransition } from './animations';
+import { useInView } from '../hooks/useInView';
 
 export default function VoiceDemo() {
+  // Scroll-triggered animations
+  const [headerRef, isHeaderInView] = useInView({ threshold: 0.2 });
+  const [cardsRef, areCardsInView] = useInView({ threshold: 0.1 });
+
   // Demo states: 'idle' | 'listening' | 'processing' | 'responding'
   const [revenueState, setRevenueState] = useState('responding');
   const [serviceState, setServiceState] = useState('responding');
@@ -48,7 +53,15 @@ export default function VoiceDemo() {
 
       <div className="container-brutal relative z-10">
         {/* Section header - asymmetric, left-aligned */}
-        <div className="mb-10 sm:mb-16 max-w-2xl">
+        <div
+          ref={headerRef}
+          className={`mb-10 sm:mb-16 max-w-2xl transition-all duration-500 motion-reduce:transition-none ${
+            isHeaderInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-6'
+          }`}
+          style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}
+        >
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
             <span className="text-mono text-slate-600 text-xs sm:text-sm">01</span>
             <div className="h-px flex-1 bg-white/10"></div>
@@ -62,7 +75,15 @@ export default function VoiceDemo() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div
+          ref={cardsRef}
+          className={`grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 transition-all duration-700 motion-reduce:transition-none ${
+            areCardsInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionTimingFunction: 'var(--ease-out-expo)', transitionDelay: '150ms' }}
+        >
           {/* Revenue Agent Card - blue accent */}
           <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors">
             {/* Left accent bar */}
