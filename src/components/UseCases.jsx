@@ -51,26 +51,30 @@ export default function UseCases() {
   ];
 
   return (
-    <section id="systems" className="section-brutal overflow-hidden">
-      <div className="container-brutal">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-white/20 mb-6">
-            <span className="text-overline">
-              Phased Deployment
-            </span>
+    <section id="systems" className="section-brutal overflow-hidden relative">
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
+
+      <div className="container-brutal relative z-10">
+        {/* Vertical accent line - hidden on mobile */}
+        <div className="hidden sm:block absolute left-6 lg:left-12 top-0 bottom-0 w-1 bg-brand-blue"></div>
+
+        {/* Section Header - asymmetric, left-aligned */}
+        <div className="mb-10 sm:mb-16 max-w-2xl sm:pl-6 lg:pl-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <span className="text-mono text-slate-600 text-xs sm:text-sm">02</span>
+            <div className="h-px flex-1 bg-white/10"></div>
           </div>
-          <h2 className="text-heading mb-4">
-            AI Systems Deployed{' '}
-            <span className="text-brand-blue">by Phase</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-3 sm:mb-4">
+            AI Systems by Phase
           </h2>
-          <p className="text-body-lg">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed">
             Integrated inside your platforms. Aligned to owners and KPIs.
           </p>
         </div>
 
         {/* Use Case Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="sm:pl-6 lg:pl-8 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {useCases.map((useCase, index) => (
             <div
               key={index}
