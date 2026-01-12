@@ -51,23 +51,20 @@ export default function UseCases() {
   ];
 
   return (
-    <section id="systems" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section id="systems" className="section-brutal overflow-hidden">
+      <div className="container-brutal">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-6">
-            <span className="text-xs font-semibold text-brand-blue uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-white/20 mb-6">
+            <span className="text-overline">
               Phased Deployment
             </span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{textShadow: '0 0 60px rgba(0, 171, 226, 0.3)'}}>
+          <h2 className="text-heading mb-4">
             AI Systems Deployed{' '}
-            <span className="bg-gradient-to-r from-white to-brand-blue bg-clip-text text-transparent">
-              by Phase
-            </span>
+            <span className="text-brand-blue">by Phase</span>
           </h2>
-          <p className="text-xl text-slate-400 leading-relaxed">
+          <p className="text-body-lg">
             Integrated inside your platforms. Aligned to owners and KPIs.
           </p>
         </div>
@@ -77,50 +74,45 @@ export default function UseCases() {
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-2xl bg-slate-900/50 backdrop-blur-xl border border-white/5 hover:border-brand-blue/20 transition-all duration-500"
+              className="group p-8 bg-slate-900 border-2 border-white/10 hover:border-white/40 transition-colors"
             >
-              {/* Glow effect */}
-              <div className="absolute -inset-px rounded-2xl bg-gradient-to-b from-brand-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue">
-                    {useCase.icon}
-                  </div>
-                  <span className="text-sm text-slate-500 font-medium">{useCase.count}</span>
+              {/* Header */}
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-12 h-12 bg-slate-800 border-2 border-white/20 flex items-center justify-center text-white">
+                  {useCase.icon}
                 </div>
-
-                {/* Category */}
-                <span className="text-xs font-semibold uppercase tracking-wider text-brand-blue mb-3 block">
-                  {useCase.category}
-                </span>
-
-                {/* Title */}
-                <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-brand-blue transition-colors">
-                  {useCase.title}
-                </h3>
-
-                {/* Features List */}
-                <ul className="space-y-3 mb-8">
-                  {useCase.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-400">
-                      <svg className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Link */}
-                <a href="#book" className="inline-flex items-center gap-2 text-brand-blue font-semibold hover:gap-3 transition-all group">
-                  Learn More
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
+                <span className="text-mono text-slate-500">{useCase.count}</span>
               </div>
+
+              {/* Category */}
+              <span className="text-overline mb-3 block">
+                {useCase.category}
+              </span>
+
+              {/* Title */}
+              <h3 className="text-heading-sm mb-4">
+                {useCase.title}
+              </h3>
+
+              {/* Features List */}
+              <ul className="space-y-3 mb-8">
+                {useCase.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 text-body">
+                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Link */}
+              <a href="#book" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-white hover:text-brand-blue hover:border-brand-blue transition-colors">
+                Learn More
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </a>
             </div>
           ))}
         </div>
