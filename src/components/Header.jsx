@@ -2,26 +2,25 @@ import { CONTACT } from '../constants/config';
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/80 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/95 border-b border-white/10">
+      <div className="container-brutal">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="flex items-center group">
+          <a href="/" className="flex items-center">
             <img
               src="/test/stratablue-logo.png"
               alt="StrataBlue"
-              className="h-12 transition-all duration-300 group-hover:scale-105"
-              style={{filter: 'drop-shadow(0 0 20px rgba(0, 171, 226, 0.3))'}}
+              className="h-12"
             />
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
-            <a href="#systems" className="text-slate-400 hover:text-white font-medium transition-colors">
+            <a href="#systems" className="text-slate-400 hover:text-white font-bold transition-colors">
               Systems
             </a>
-            <a href="#results" className="text-slate-400 hover:text-white font-medium transition-colors">
+            <a href="#results" className="text-slate-400 hover:text-white font-bold transition-colors">
               Results
             </a>
-            <a href="#integration" className="text-slate-400 hover:text-white font-medium transition-colors">
+            <a href="#integration" className="text-slate-400 hover:text-white font-bold transition-colors">
               Integration
             </a>
           </nav>
@@ -29,17 +28,17 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <a
               href={`tel:${CONTACT.phone}`}
-              className="hidden sm:flex items-center gap-2 text-brand-blue font-semibold hover:text-white transition-colors"
+              className="hidden sm:flex items-center gap-2 text-white font-bold hover:text-brand-blue transition-colors"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
               </span>
               Try AI Agent
             </a>
             <a
               href="#book"
-              className="px-5 py-2.5 bg-white text-slate-900 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
+              className="px-5 py-3 bg-white text-slate-900 font-bold hover:bg-brand-blue hover:text-white transition-colors"
             >
               Book Demo
             </a>
