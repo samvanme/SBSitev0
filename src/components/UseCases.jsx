@@ -74,20 +74,20 @@ export default function UseCases() {
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="group p-8 bg-slate-900 border-2 border-white/10 hover:border-white/40 transition-colors"
+              className="group p-8 bg-slate-900 border-2 border-white/10 hover:border-white/40 hover:bg-slate-900/80 transition-all"
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 bg-slate-800 border-2 border-white/20 flex items-center justify-center text-white">
-                  {useCase.icon}
-                </div>
-                <span className="text-mono text-slate-500">{useCase.count}</span>
+              {/* Icon */}
+              <div className="w-10 h-10 bg-slate-800 flex items-center justify-center text-white mb-8">
+                {useCase.icon}
               </div>
 
-              {/* Category */}
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2 block">
-                {useCase.category}
-              </span>
+              {/* Category + Phase */}
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                  {useCase.category}
+                </span>
+                <span className="text-mono text-slate-600">{useCase.count}</span>
+              </div>
 
               {/* Title */}
               <h3 className="text-heading-sm mb-6">
