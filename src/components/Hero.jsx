@@ -1,6 +1,9 @@
 import { CONTACT } from '../constants/config';
+import { useInView } from '../hooks/useInView';
 
 export default function Hero() {
+  const [contentRef, isContentInView] = useInView({ threshold: 0.1 });
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16 sm:pt-20">
       {/* Grid overlay - stark brutalist grid, responsive sizing */}
@@ -10,7 +13,15 @@ export default function Hero() {
         {/* Thick vertical accent line - hidden on mobile, visible on sm+ */}
         <div className="hidden sm:block absolute left-6 lg:left-12 top-16 sm:top-20 bottom-16 sm:bottom-20 w-1 bg-brand-blue"></div>
 
-        <div className="max-w-4xl sm:pl-6 lg:pl-8">
+        <div
+          ref={contentRef}
+          className={`max-w-4xl sm:pl-6 lg:pl-8 transition-all duration-500 motion-reduce:transition-none ${
+            isContentInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}
+        >
           {/* Overline - minimal brutalist */}
           <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
             <span className="relative flex h-2 w-2">

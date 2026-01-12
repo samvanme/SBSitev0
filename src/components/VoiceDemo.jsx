@@ -1,6 +1,51 @@
+import { useState, useEffect } from 'react';
 import { CONTACT } from '../constants/config';
+import { Waveform, ThinkingState, StateTransition } from './animations';
+import { useInView } from '../hooks/useInView';
 
 export default function VoiceDemo() {
+  // Scroll-triggered animations
+  const [headerRef, isHeaderInView] = useInView({ threshold: 0.2 });
+  const [cardsRef, areCardsInView] = useInView({ threshold: 0.1 });
+
+  // Demo states: 'idle' | 'listening' | 'processing' | 'responding'
+  const [revenueState, setRevenueState] = useState('responding');
+  const [serviceState, setServiceState] = useState('responding');
+
+  // Simulate state cycling for demo purposes
+  useEffect(() => {
+    const states = ['responding', 'listening', 'processing', 'responding'];
+    let revenueIdx = 0;
+    let serviceIdx = 0;
+
+    const revenueTimer = setInterval(() => {
+      revenueIdx = (revenueIdx + 1) % states.length;
+      setRevenueState(states[revenueIdx]);
+    }, 4000);
+
+    const serviceTimer = setInterval(() => {
+      serviceIdx = (serviceIdx + 1) % states.length;
+      setServiceState(states[serviceIdx]);
+    }, 5000);
+
+    return () => {
+      clearInterval(revenueTimer);
+      clearInterval(serviceTimer);
+    };
+  }, []);
+
+  const getWaveformState = (demoState) => {
+    if (demoState === 'responding') return 'playing';
+    if (demoState === 'listening') return 'paused';
+    return 'inactive';
+  };
+
+  const getStatusLabel = (demoState) => {
+    if (demoState === 'processing') return 'PROCESSING';
+    if (demoState === 'listening') return 'LISTENING';
+    return 'LIVE';
+  };
+
   return (
     <section className="py-16 sm:py-24 lg:py-36 relative overflow-hidden" id="demo">
       {/* Grid overlay - responsive sizing */}
@@ -8,7 +53,15 @@ export default function VoiceDemo() {
 
       <div className="container-brutal relative z-10">
         {/* Section header - asymmetric, left-aligned */}
-        <div className="mb-10 sm:mb-16 max-w-2xl">
+        <div
+          ref={headerRef}
+          className={`mb-10 sm:mb-16 max-w-2xl transition-all duration-500 motion-reduce:transition-none ${
+            isHeaderInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-6'
+          }`}
+          style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}
+        >
           <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
             <span className="text-mono text-slate-600 text-xs sm:text-sm">01</span>
             <div className="h-px flex-1 bg-white/10"></div>
@@ -22,7 +75,15 @@ export default function VoiceDemo() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+        <div
+          ref={cardsRef}
+          className={`grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 transition-all duration-700 motion-reduce:transition-none ${
+            areCardsInView
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionTimingFunction: 'var(--ease-out-expo)', transitionDelay: '150ms' }}
+        >
           {/* Revenue Agent Card - blue accent */}
           <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors">
             {/* Left accent bar */}
@@ -40,26 +101,27 @@ export default function VoiceDemo() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                   </span>
-                  LIVE
+                  {getStatusLabel(revenueState)}
                 </span>
               </div>
 
-              {/* Waveform - brutalist container */}
-              <div className="h-14 bg-slate-800 border-2 border-white/10 flex items-center justify-center gap-0.5 px-4 mb-4">
-                {[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5].map((delay, i) => (
-                  <div
-                    key={i}
-                    className="w-1 bg-brand-blue animate-waveform"
-                    style={{
-                      height: `${16 + (i % 3) * 8}px`,
-                      animationDelay: `${delay}s`
-                    }}
-                  ></div>
-                ))}
-              </div>
+              {/* Waveform - using extracted component */}
+              <Waveform
+                state={getWaveformState(revenueState)}
+                color="brand"
+                bars={16}
+              />
+
+              {/* Thinking state indicator */}
+              <StateTransition show={revenueState === 'processing'} enter="fade" duration="fast">
+                <div className="mt-3 flex items-center gap-2">
+                  <ThinkingState variant="dots" size="sm" label="Processing request" />
+                  <span className="text-xs text-slate-500 font-mono">Processing...</span>
+                </div>
+              </StateTransition>
 
               {/* Transcript */}
-              <p className="text-body text-sm mb-5 italic">
+              <p className="text-body text-sm mb-5 mt-4 italic">
                 "I can help qualify your interest and schedule a call with our team..."
               </p>
 
@@ -95,26 +157,27 @@ export default function VoiceDemo() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                   </span>
-                  LIVE
+                  {getStatusLabel(serviceState)}
                 </span>
               </div>
 
-              {/* Waveform - brutalist container */}
-              <div className="h-14 bg-slate-800 border-2 border-white/10 flex items-center justify-center gap-0.5 px-4 mb-4">
-                {[0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7].map((delay, i) => (
-                  <div
-                    key={i}
-                    className="w-1 bg-white animate-waveform"
-                    style={{
-                      height: `${16 + (i % 4) * 6}px`,
-                      animationDelay: `${delay}s`
-                    }}
-                  ></div>
-                ))}
-              </div>
+              {/* Waveform - using extracted component */}
+              <Waveform
+                state={getWaveformState(serviceState)}
+                color="white"
+                bars={16}
+              />
+
+              {/* Thinking state indicator */}
+              <StateTransition show={serviceState === 'processing'} enter="fade" duration="fast">
+                <div className="mt-3 flex items-center gap-2">
+                  <ThinkingState variant="processing" size="sm" label="Processing request" />
+                  <span className="text-xs text-slate-500 font-mono">Processing...</span>
+                </div>
+              </StateTransition>
 
               {/* Transcript */}
-              <p className="text-body text-sm mb-5 italic">
+              <p className="text-body text-sm mb-5 mt-4 italic">
                 "I've located your account and can help resolve that right away..."
               </p>
 
