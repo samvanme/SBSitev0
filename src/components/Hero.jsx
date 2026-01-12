@@ -31,27 +31,27 @@ export default function Hero() {
             Voice agents installed inside your CRM. Full attribution. Audit logs. Measurable impact from day one.
           </p>
 
-          {/* Stats Row - larger numbers, cleaner presentation */}
-          <div className="flex flex-wrap items-baseline gap-x-12 gap-y-6 mb-12">
+          {/* Stats Row - responsive gaps, larger numbers */}
+          <div className="flex flex-wrap items-baseline gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-6 mb-12">
             <div>
-              <div className="text-display-lg text-white leading-none">$680K</div>
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-none">$680K</div>
               <div className="text-mono text-xs text-slate-500 uppercase mt-2">Revenue Influence</div>
             </div>
             <div>
-              <div className="text-display-lg text-white leading-none">45</div>
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-none">45</div>
               <div className="text-mono text-xs text-slate-500 uppercase mt-2">Days to Measure</div>
             </div>
             <div>
-              <div className="text-display-lg text-white leading-none">$300K</div>
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white leading-none">$300K</div>
               <div className="text-mono text-xs text-slate-500 uppercase mt-2">Recovered Revenue</div>
             </div>
           </div>
 
-          {/* CTA Buttons - brutalist, high contrast */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
+          {/* CTA Buttons - full-width mobile, inline desktop */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 mb-12">
             <a
               href={`tel:${CONTACT.phone}`}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-brand-blue text-white font-bold text-lg border-2 border-white shadow-brutal-lg hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_theme('colors.white')] active:translate-x-0 active:translate-y-0 active:shadow-brutal-sm transition-all"
+              className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-4 bg-brand-blue text-white font-bold text-base sm:text-lg border-2 border-white shadow-brutal-lg hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_theme('colors.white')] active:translate-x-0 active:translate-y-0 active:shadow-brutal-sm transition-all"
             >
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -59,7 +59,7 @@ export default function Hero() {
               </span>
               Try AI Agent Now
             </a>
-            <button className="inline-flex items-center gap-3 px-8 py-4 text-white font-bold text-lg border-2 border-white hover:bg-white hover:text-slate-900 transition-colors">
+            <button className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-4 text-white font-bold text-base sm:text-lg border-2 border-white hover:bg-white hover:text-slate-900 transition-colors">
               Book Strategy Call
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

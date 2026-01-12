@@ -19,10 +19,10 @@ export default function VoiceDemo() {
           </p>
         </div>
 
-        {/* Asymmetric card layout - featured + secondary */}
-        <div className="grid lg:grid-cols-5 gap-6 max-w-6xl">
-          {/* Featured Card - Revenue Agent (larger) */}
-          <div className="lg:col-span-3 p-8 bg-slate-900 border-2 border-white/30 hover:border-white transition-colors">
+        {/* Asymmetric card layout - stacked mobile, 2-col tablet, 3:2 desktop */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl">
+          {/* Featured Card - Revenue Agent (larger on desktop) */}
+          <div className="md:col-span-2 lg:col-span-3 p-5 sm:p-8 bg-slate-900 border-2 border-white/30 hover:border-white transition-colors">
             {/* Agent header - more prominent */}
             <div className="flex items-start justify-between mb-8">
               <div>
@@ -46,7 +46,7 @@ export default function VoiceDemo() {
             </div>
 
             {/* Waveform - simplified container */}
-            <div className="h-20 bg-slate-800/50 border-2 border-white/10 flex items-center justify-center gap-1 px-8 mb-6">
+            <div className="h-16 sm:h-20 bg-slate-800/50 border-2 border-white/10 flex items-center justify-center gap-0.5 sm:gap-1 px-4 sm:px-8 mb-6">
               {[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5].map((delay, i) => (
                 <div
                   key={i}
@@ -64,8 +64,8 @@ export default function VoiceDemo() {
             </p>
 
             {/* Controls - larger play button */}
-            <div className="flex items-center gap-6">
-              <button className="w-16 h-16 bg-brand-blue border-2 border-white text-white flex items-center justify-center shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+            <div className="flex items-center gap-4 sm:gap-6">
+              <button className="w-14 h-14 sm:w-16 sm:h-16 bg-brand-blue border-2 border-white text-white flex items-center justify-center shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
                 <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                 </svg>
@@ -77,8 +77,8 @@ export default function VoiceDemo() {
             </div>
           </div>
 
-          {/* Secondary Card - Service Agent (smaller) */}
-          <div className="lg:col-span-2 p-6 bg-slate-900 border-2 border-white/20 hover:border-white/40 transition-colors">
+          {/* Secondary Card - Service Agent (smaller on desktop) */}
+          <div className="md:col-span-2 lg:col-span-2 p-5 sm:p-6 bg-slate-900 border-2 border-white/20 hover:border-white/40 transition-colors">
             {/* Agent header */}
             <div className="flex items-start justify-between mb-6">
               <div>
