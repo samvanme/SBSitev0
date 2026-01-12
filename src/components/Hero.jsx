@@ -7,9 +7,12 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
       <div className="container-brutal relative z-10 py-20 lg:py-28">
-        <div className="max-w-4xl">
+        {/* Thick vertical accent line */}
+        <div className="absolute left-6 lg:left-12 top-20 bottom-20 w-1 bg-brand-blue"></div>
+
+        <div className="max-w-4xl pl-6 lg:pl-8">
           {/* Overline - minimal brutalist */}
-          <div className="inline-flex items-center gap-3 mb-8">
+          <div className="inline-flex items-center gap-3 mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
@@ -17,14 +20,17 @@ export default function Hero() {
             <span className="text-overline">Production AI Systems</span>
           </div>
 
-          {/* Headline - maximum impact */}
-          <h1 className="text-display-xl text-white mb-8">
+          {/* Headline - maximum impact, brutalist typography */}
+          <h1 className="text-display-xl text-white mb-6 leading-[0.85]">
             AI That <span className="text-brand-blue">Works</span><br />
             Inside Your CRM
           </h1>
 
+          {/* Horizontal accent */}
+          <div className="w-24 h-1 bg-white/20 mb-8"></div>
+
           {/* Single strong subheadline */}
-          <p className="text-body-lg mb-12 max-w-2xl">
+          <p className="text-body-lg mb-12 max-w-xl">
             Voice agents for revenue and service operations.
             Integrated with your systems. Measured in your dashboards.
           </p>
