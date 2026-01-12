@@ -2,8 +2,9 @@ export default function UseCases() {
   const useCases = [
     {
       category: 'Revenue Systems',
-      count: 'Install Phase 1',
+      count: 'Phase 1',
       title: 'Inbound Lead Handling',
+      accent: 'blue',
       features: [
         'CRM-integrated call routing',
         'Lead qualification + scoring',
@@ -18,8 +19,9 @@ export default function UseCases() {
     },
     {
       category: 'Service Systems',
-      count: 'Install Phase 2',
+      count: 'Phase 2',
       title: 'Customer Support Intake',
+      accent: 'white',
       features: [
         'Intelligent routing + escalation',
         'Quality scoring per conversation',
@@ -34,8 +36,9 @@ export default function UseCases() {
     },
     {
       category: 'HR Systems',
-      count: 'Install Phase 3',
+      count: 'Phase 3',
       title: 'Candidate Screening',
+      accent: 'white',
       features: [
         'Interview scheduling automation',
         'Candidate qualification calls',
@@ -51,68 +54,75 @@ export default function UseCases() {
   ];
 
   return (
-    <section id="systems" className="section-brutal overflow-hidden">
-      <div className="container-brutal">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-white/20 mb-6">
-            <span className="text-overline">
-              Phased Deployment
-            </span>
+    <section id="systems" className="section-brutal overflow-hidden relative">
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
+
+      <div className="container-brutal relative z-10">
+        {/* Vertical accent line - hidden on mobile */}
+        <div className="hidden sm:block absolute left-6 lg:left-12 top-0 bottom-0 w-1 bg-brand-blue"></div>
+
+        {/* Section Header - asymmetric, left-aligned */}
+        <div className="mb-10 sm:mb-16 max-w-2xl sm:pl-6 lg:pl-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <span className="text-mono text-slate-600 text-xs sm:text-sm">02</span>
+            <div className="h-px flex-1 bg-white/10"></div>
           </div>
-          <h2 className="text-heading mb-4">
-            AI Systems Deployed{' '}
-            <span className="text-brand-blue">by Phase</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-3 sm:mb-4">
+            AI Systems by Phase
           </h2>
-          <p className="text-body-lg">
+          <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed">
             Integrated inside your platforms. Aligned to owners and KPIs.
           </p>
         </div>
 
         {/* Use Case Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="sm:pl-6 lg:pl-8 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="group p-8 bg-slate-900 border-2 border-white/10 hover:border-white/40 transition-colors"
+              className="group relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors"
             >
-              {/* Header */}
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-12 h-12 bg-slate-800 border-2 border-white/20 flex items-center justify-center text-white">
-                  {useCase.icon}
+              {/* Left accent bar - blue for Phase 1, white for Phase 2/3 */}
+              <div className={`absolute left-0 top-0 bottom-0 w-1 ${useCase.accent === 'blue' ? 'bg-brand-blue' : 'bg-white'}`}></div>
+
+              <div className="p-4 pl-6 sm:p-6 sm:pl-8">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className={`w-12 h-12 border-2 border-white flex items-center justify-center text-white ${useCase.accent === 'blue' ? 'bg-brand-blue shadow-brutal-sm' : 'bg-slate-800 shadow-brutal-white-sm'}`}>
+                    {useCase.icon}
+                  </div>
+                  <span className="text-mono text-slate-500 text-xs sm:text-sm">{useCase.count}</span>
                 </div>
-                <span className="text-mono text-slate-500">{useCase.count}</span>
+
+                {/* Category */}
+                <span className="text-overline mb-2 block">
+                  {useCase.category}
+                </span>
+
+                {/* Title */}
+                <h3 className="font-bold text-white text-lg sm:text-xl mb-4">
+                  {useCase.title}
+                </h3>
+
+                {/* Features List */}
+                <ul className="space-y-2 sm:space-y-3 mb-6">
+                  {useCase.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-slate-300">
+                      <span className={`mt-1.5 w-1.5 h-1.5 flex-shrink-0 ${useCase.accent === 'blue' ? 'bg-brand-blue' : 'bg-white'}`}></span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Link */}
+                <a href="#book" className="inline-flex items-center gap-2 text-white font-bold text-sm group/link">
+                  <span className="border-b-2 border-white/50 group-hover/link:border-white transition-colors">Learn More</span>
+                  <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </a>
               </div>
-
-              {/* Category */}
-              <span className="text-overline mb-3 block">
-                {useCase.category}
-              </span>
-
-              {/* Title */}
-              <h3 className="text-heading-sm mb-4">
-                {useCase.title}
-              </h3>
-
-              {/* Features List */}
-              <ul className="space-y-3 mb-8">
-                {useCase.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-body">
-                    <svg className="w-5 h-5 text-white mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA Link */}
-              <a href="#book" className="inline-flex items-center gap-2 text-white font-bold border-b-2 border-white hover:text-brand-blue hover:border-brand-blue transition-colors">
-                Learn More
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                </svg>
-              </a>
             </div>
           ))}
         </div>

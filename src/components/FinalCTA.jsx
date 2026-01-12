@@ -2,49 +2,48 @@ import { CONTACT } from '../constants/config';
 
 export default function FinalCTA() {
   return (
-    <section id="book" className="section-brutal overflow-hidden">
-      <div className="container-brutal text-center">
-        <h2 className="text-display-lg text-white mb-6">
-          Ready to Install an AI System?
+    <section id="book" className="section-brutal overflow-hidden relative">
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
+
+      <div className="container-brutal relative z-10 text-center">
+        {/* Display headline */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black uppercase tracking-tight text-white mb-4 sm:mb-6 leading-[0.95]">
+          Ready to Install<br className="sm:hidden" /> an AI System?
         </h2>
-        <p className="text-body-lg mb-10 max-w-2xl mx-auto">
-          DM "FIT CHECK" or call now to evaluate where AI systems fit inside your revenue or service operations.
+
+        {/* Horizontal accent */}
+        <div className="w-16 sm:w-24 h-1 bg-white/20 mx-auto mb-6 sm:mb-8"></div>
+
+        <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed mb-8 sm:mb-10 max-w-xl mx-auto">
+          Call now to evaluate where AI systems fit inside your revenue or service operations.
         </p>
 
-        {/* Brutalist CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8">
+        {/* CTA Buttons - matching Hero styling */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-lg mx-auto mb-8 sm:mb-10">
           <a
             href={`tel:${CONTACT.phone}`}
-            className="flex-1 px-8 py-5 bg-brand-blue text-white font-bold border-2 border-white shadow-brutal-lg hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[8px_8px_0_theme('colors.brand.blue')] active:translate-x-0 active:translate-y-0 active:shadow-brutal-sm transition-all text-center"
+            className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-4 min-h-[48px] bg-brand-blue text-white font-bold border-2 border-white shadow-brutal hover:shadow-brutal-lg active:shadow-brutal-sm active:translate-x-0.5 active:translate-y-0.5 transition-all"
           >
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+            </span>
             Call Now: {CONTACT.phoneDisplay}
           </a>
-          <button className="px-8 py-5 text-white font-bold border-2 border-white hover:bg-white hover:text-slate-900 transition-all whitespace-nowrap">
+          <a
+            href="#demo"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-4 min-h-[48px] text-white font-bold border-2 border-white/30 hover:border-white hover:bg-white/5 transition-all"
+          >
             Schedule Call
-          </button>
+          </a>
         </div>
 
-        {/* Trust Line */}
-        <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-400">
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-            </svg>
-            <span>CRM Integration</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-            </svg>
-            <span>Full Attribution</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-            </svg>
-            <span>Audit Logs & Reporting</span>
-          </div>
-        </div>
+        {/* Trust Line - simplified text dividers like Hero */}
+        <p className="text-mono text-slate-500 text-xs sm:text-sm">
+          <span className="hidden sm:inline">CRM Integration · Full Attribution · Governed Systems</span>
+          <span className="sm:hidden">CRM · Attribution · Governed</span>
+        </p>
       </div>
     </section>
   );
