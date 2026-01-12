@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -33,47 +33,86 @@
 }
 
 @layer components {
-  /* Dark Aurora Background */
+  /* Grid system - 12 column with visible structure */
+  .grid-brutal {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Section container - generous margins */
+  .section-brutal {
+    @apply py-24 lg:py-36;
+  }
+
+  /* Content container - asymmetric option */
+  .container-brutal {
+    @apply max-w-7xl mx-auto px-6 lg:px-12;
+  }
+
+  .container-brutal-wide {
+    @apply max-w-[1400px] mx-auto px-6 lg:px-16;
+  }
+
+  /* Display - Darker Grotesque, massive scale */
+  .text-display-xl {
+    @apply font-display text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.9];
+  }
+
+  .text-display-lg {
+    @apply font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[0.95];
+  }
+
+  /* Section headers - bold, no decoration */
+  .text-heading {
+    @apply font-display text-4xl lg:text-5xl font-bold text-white leading-tight;
+  }
+
+  .text-heading-sm {
+    @apply font-display text-2xl lg:text-3xl font-bold text-white;
+  }
+
+  /* Body - Space Grotesk, readable */
+  .text-body-lg {
+    @apply font-sans text-xl text-slate-300 leading-relaxed;
+  }
+
+  .text-body {
+    @apply font-sans text-base text-slate-400 leading-relaxed;
+  }
+
+  /* Mono - for data, stats, technical */
+  .text-mono {
+    @apply font-mono text-sm tracking-wide;
+  }
+
+  /* Overline - smaller, spaced */
+  .text-overline {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.2em] text-brand-blue;
+  }
+
+  /* Dark Aurora Background - Static, no animation */
   .aurora-bg {
     position: fixed;
     inset: 0;
-    overflow: hidden;
     background: #030712;
     z-index: -1;
   }
 
-  .aurora-bg::before,
-  .aurora-bg::after {
+  /* Static subtle gradient, no animation */
+  .aurora-bg::before {
     content: '';
     position: absolute;
-    width: 150%;
-    height: 150%;
+    inset: 0;
     background: radial-gradient(
-      ellipse at center,
-      rgba(0, 171, 226, 0.15) 0%,
-      transparent 50%
+      ellipse 80% 50% at 50% 0%,
+      rgba(0, 171, 226, 0.08) 0%,
+      transparent 60%
     );
-    animation: aurora 15s ease-in-out infinite alternate;
+    /* No animation */
   }
 
-  .aurora-bg::before {
-    top: -50%;
-    left: -25%;
-    animation-delay: 0s;
-  }
-
-  .aurora-bg::after {
-    bottom: -50%;
-    right: -25%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(16, 86, 101, 0.2) 0%,
-      transparent 50%
-    );
-    animation-delay: -7s;
-  }
-
-  /* Animated Background Effects */
+  /* Static Background Effects - No Animation */
   .hero-beams {
     position: absolute;
     inset: 0;
@@ -99,7 +138,7 @@
       rgba(16, 86, 101, 0.08) 315deg,
       transparent 360deg
     );
-    animation: rotate-beams 20s linear infinite;
+    /* Animation removed - static conic gradient */
   }
 
   .bg-orbs {
@@ -114,6 +153,7 @@
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.4;
+    /* Animations removed - static orbs */
   }
 
   .bg-orbs .orb-1 {
@@ -122,8 +162,6 @@
     background: radial-gradient(circle, #00ABE2 0%, transparent 70%);
     top: -10%;
     right: -5%;
-    animation: float 15s ease-in-out infinite;
-    animation-delay: 0s;
   }
 
   .bg-orbs .orb-2 {
@@ -132,8 +170,6 @@
     background: radial-gradient(circle, #105665 0%, transparent 70%);
     bottom: 20%;
     left: -10%;
-    animation: float 15s ease-in-out infinite;
-    animation-delay: -5s;
   }
 
   .bg-orbs .orb-3 {
@@ -142,8 +178,6 @@
     background: radial-gradient(circle, #00ABE2 0%, transparent 70%);
     top: 50%;
     right: 20%;
-    animation: float 15s ease-in-out infinite;
-    animation-delay: -10s;
   }
 
   .bg-dots {
@@ -255,28 +289,6 @@
       radial-gradient(at 50% 50%, rgba(0, 171, 226, 0.05) 0px, transparent 50%);
   }
 
-  /* Stronger Shadow Depth */
-  .shadow-brutal {
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 12px 24px rgba(0, 0, 0, 0.08),
-      0 24px 48px rgba(0, 0, 0, 0.12);
-  }
-
-  .shadow-brutal-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .shadow-brutal-hover:hover {
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 4px 8px rgba(0, 0, 0, 0.06),
-      0 16px 32px rgba(0, 0, 0, 0.12),
-      0 32px 64px rgba(0, 171, 226, 0.15);
-    transform: translateY(-2px);
-  }
-
   /* Grain Effect for Dark Sections */
   .grain-dark::after {
     content: '';
@@ -289,18 +301,67 @@
   }
 }
 
-@keyframes rotate-beams {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@layer utilities {
+  /* Brutalist hard shadows - offset, no blur */
+  .shadow-brutal-sm {
+    box-shadow: 2px 2px 0 theme('colors.brand.blue');
+  }
+  .shadow-brutal {
+    box-shadow: 4px 4px 0 theme('colors.brand.blue');
+  }
+  .shadow-brutal-lg {
+    box-shadow: 6px 6px 0 theme('colors.brand.blue');
+  }
+
+  /* White border shadows for dark backgrounds */
+  .shadow-brutal-white-sm {
+    box-shadow: 2px 2px 0 rgba(255, 255, 255, 0.9);
+  }
+  .shadow-brutal-white {
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Hover states - shadow grows */
+  .hover\:shadow-brutal:hover {
+    box-shadow: 6px 6px 0 theme('colors.brand.blue');
+  }
+  .hover\:shadow-brutal-lg:hover {
+    box-shadow: 8px 8px 0 theme('colors.brand.blue');
+  }
+
+  /* Active/pressed - shadow shrinks */
+  .active\:shadow-brutal-sm:active {
+    box-shadow: 2px 2px 0 theme('colors.brand.blue');
+    transform: translate(2px, 2px);
+  }
+
+  /* Brutalist borders */
+  .border-brutal {
+    @apply border-2 border-white;
+  }
+  .border-brutal-thick {
+    @apply border-3 border-white;
+  }
+  .border-brutal-accent {
+    @apply border-2 border-brand-blue;
+  }
+
+  /* Brutalist dividers - solid, not gradient */
+  .divider-brutal {
+    @apply h-0.5 bg-white/20;
+  }
+  .divider-brutal-vertical {
+    @apply w-0.5 bg-white/20;
+  }
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Reduced motion support - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

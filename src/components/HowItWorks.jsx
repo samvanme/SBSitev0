@@ -35,23 +35,20 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="integration" className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section id="integration" className="section-brutal overflow-hidden">
+      <div className="container-brutal">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-6">
-            <span className="text-xs font-semibold text-brand-blue uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-white/20 mb-6">
+            <span className="text-overline">
               How We Deploy
             </span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{textShadow: '0 0 60px rgba(0, 171, 226, 0.3)'}}>
+          <h2 className="text-heading mb-4">
             Discover. Design.{' '}
-            <span className="bg-gradient-to-r from-white to-brand-blue bg-clip-text text-transparent">
-              Deploy.
-            </span>
+            <span className="text-brand-blue">Deploy.</span>
           </h2>
-          <p className="text-xl text-slate-400 leading-relaxed">
+          <p className="text-body-lg">
             Production AI systems built for control, measurement, and scale
           </p>
         </div>
@@ -62,26 +59,25 @@ export default function HowItWorks() {
             <div key={index} className="relative">
               {/* Connector Line (desktop only) */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-brand-blue/30 to-transparent -translate-x-6"></div>
+                <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-white/20 -translate-x-6"></div>
               )}
 
-              <div className="relative">
+              <div className="relative p-6 border-2 border-white/10 hover:border-white/30 transition-colors">
                 {/* Icon Container */}
-                <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-brand-blue-dark to-brand-blue flex items-center justify-center text-white"
-                     style={{boxShadow: '0 0 20px rgba(0, 171, 226, 0.3)'}}>
+                <div className="w-14 h-14 mb-6 bg-brand-blue border-2 border-white flex items-center justify-center text-white shadow-brutal">
                   {step.icon}
                 </div>
 
                 {/* Step Number */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-slate-900 border-4 border-brand-blue/20 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-slate-600">{step.number}</span>
+                <div className="absolute -top-4 -right-4 w-14 h-14 bg-slate-900 border-2 border-white/40 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-white">{step.number}</span>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-semibold text-white mb-4">
+                <h3 className="text-heading-sm mb-4">
                   {step.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed">
+                <p className="text-body">
                   {step.description}
                 </p>
               </div>
@@ -93,10 +89,7 @@ export default function HowItWorks() {
         <div className="text-center mt-16">
           <a
             href={`tel:${CONTACT.phone}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-blue-dark to-brand-blue text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105"
-            style={{boxShadow: '0 0 20px rgba(0, 171, 226, 0.3)'}}
-            onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 0 40px rgba(0, 171, 226, 0.5)'}
-            onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 171, 226, 0.3)'}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-brand-blue text-white font-bold border-2 border-white shadow-brutal hover:shadow-brutal-lg active:shadow-brutal-sm transition-all"
           >
             Schedule Fit Check Call
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
