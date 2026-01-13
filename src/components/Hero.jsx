@@ -41,8 +41,7 @@ export default function Hero() {
 
           {/* Single strong subheadline */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed mb-8 sm:mb-12 max-w-xl">
-            We build AI systems with you, not for you.
-            From strategy through production—integrated, measured, and supported.
+            Inside of every part of your business.
           </p>
 
           {/* CTA Buttons - stack on mobile, ensure 44px+ touch targets */}
