@@ -105,10 +105,10 @@ export default function HowItWorks() {
         {/* CTA - left aligned */}
         <div className="sm:pl-6 lg:pl-8 mt-10 sm:mt-16">
           <a
-            href={`tel:${CONTACT.phone}`}
+            href="#book"
             className="inline-flex items-center justify-center sm:justify-start gap-3 px-6 sm:px-8 py-4 min-h-[48px] bg-brand-blue text-white font-bold border-2 border-white shadow-brutal hover:shadow-brutal-lg active:shadow-brutal-sm active:translate-x-0.5 active:translate-y-0.5 transition-all"
           >
-            Schedule Fit Check Call
+            Book Discovery Call
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>

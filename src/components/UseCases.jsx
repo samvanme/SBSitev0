@@ -134,7 +134,7 @@ export default function UseCases() {
 
                 {/* CTA Link */}
                 <a href="#book" className="inline-flex items-center gap-2 text-white font-bold text-sm group/link">
-                  <span className="border-b-2 border-white/50 group-hover/link:border-white transition-colors">Learn More</span>
+                  <span className="border-b-2 border-white/50 group-hover/link:border-white transition-colors">Explore This System</span>
                   <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                   </svg>
