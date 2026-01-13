@@ -61,14 +61,41 @@ export default function ConversationTranscript({
     });
   };
 
+  // Custom scrollbar styles for brutalist dark theme
+  const scrollbarStyles = {
+    // Firefox
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'rgb(51 65 85 / 0.5) transparent',
+  };
+
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col gap-3 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
+      className="demo-transcript flex flex-col gap-3 max-h-48 overflow-y-auto"
+      style={scrollbarStyles}
       role="log"
       aria-label="Conversation transcript"
       aria-live="polite"
     >
+      {/* WebKit scrollbar styling */}
+      <style>{`
+        .demo-transcript::-webkit-scrollbar {
+          width: 6px;
+        }
+        .demo-transcript::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .demo-transcript::-webkit-scrollbar-thumb {
+          background: rgb(51 65 85 / 0.3);
+          border: none;
+        }
+        .demo-transcript::-webkit-scrollbar-thumb:hover {
+          background: rgb(51 65 85 / 0.6);
+        }
+        .demo-transcript::-webkit-scrollbar-thumb:active {
+          background: rgb(71 85 105 / 0.8);
+        }
+      `}</style>
       {/* Empty state */}
       {messages.length === 0 && !isStreaming && (
         <p className="text-center text-slate-500 text-sm py-4 font-mono">
