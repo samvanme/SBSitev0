@@ -5,7 +5,7 @@ export default function HowItWorks() {
     {
       number: '01',
       title: 'Discover',
-      description: 'Map workflows, identify pain points, and evaluate where AI systems deliver the highest ROI inside your operations.',
+      description: 'Together we map your workflows, identify pain points, and evaluate where AI systems deliver the highest ROI.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -15,7 +15,7 @@ export default function HowItWorks() {
     {
       number: '02',
       title: 'Design',
-      description: 'Build system architecture with platform integrations, role-based access controls, and metrics tied to revenue or service outcomes.',
+      description: 'We collaborate on system architecture with integrations, access controls, and metrics tied to your business outcomes.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -29,6 +29,16 @@ export default function HowItWorks() {
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      ),
+    },
+    {
+      number: '04',
+      title: 'Support',
+      description: 'Ongoing partnership with optimization, updates, and scaling support. Your AI system grows with your business.',
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
         </svg>
       ),
     },
@@ -50,15 +60,15 @@ export default function HowItWorks() {
             <div className="h-px flex-1 bg-white/10"></div>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white leading-tight mb-3 sm:mb-4">
-            Discover. Design. Deploy.
+            Discover. Design. Deploy. Support.
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed">
-            Production AI systems built for control, measurement, and scale.
+            From strategy through production—and beyond. Your end-to-end AI integration partner.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="sm:pl-6 lg:pl-8 grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div className="sm:pl-6 lg:pl-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {steps.map((step, index) => (
             <div key={index} className="relative">
               {/* Connector Line (desktop only) */}
