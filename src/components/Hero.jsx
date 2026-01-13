@@ -15,7 +15,7 @@ export default function Hero() {
 
         <div
           ref={contentRef}
-          className={`max-w-4xl sm:pl-6 lg:pl-8 transition-all duration-500 motion-reduce:transition-none ${
+          className={`max-w-7xl sm:pl-6 lg:pl-8 transition-all duration-500 motion-reduce:transition-none ${
             isContentInView
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-8'
