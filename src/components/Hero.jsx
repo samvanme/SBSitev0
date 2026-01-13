@@ -41,7 +41,7 @@ export default function Hero() {
 
           {/* Single strong subheadline */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed mb-8 sm:mb-12 max-w-xl">
-            In every piece of your business.
+            In every part of your business.
           </p>
 
           {/* CTA Buttons - stack on mobile, ensure 44px+ touch targets */}
