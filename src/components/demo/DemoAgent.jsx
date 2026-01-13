@@ -204,7 +204,7 @@ export default function DemoAgent({
 
         {/* Conversation transcript - grows to fill available space */}
         <div className="mt-4 flex-1 min-h-0 relative">
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 flex flex-col">
             <ConversationTranscript
               messages={messages}
               isStreaming={isStreaming}

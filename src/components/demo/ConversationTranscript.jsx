@@ -106,7 +106,7 @@ export default function ConversationTranscript({
   return (
     <div
       ref={scrollRef}
-      className="demo-transcript flex flex-col-reverse gap-3 h-full overflow-y-auto"
+      className="demo-transcript flex flex-col-reverse gap-3 flex-1 min-h-0 overflow-y-auto"
       style={scrollbarStyles}
       role="log"
       aria-label="Conversation transcript"
