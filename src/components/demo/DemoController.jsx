@@ -527,24 +527,6 @@ export default function DemoController({
         })}
       </DemoCarousel>
 
-      {/* Transition prompt - always visible when not interactive */}
-      <StateTransition show={!isInteractive} enter="slide-up" duration="normal">
-        <div className="bg-slate-800/50 border-2 border-brand-blue/50 p-4 sm:p-6 text-center">
-          <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-            Ready to try it yourself?
-          </h3>
-          <p className="text-slate-400 text-sm sm:text-base mb-4">
-            Start an interactive conversation with the {USE_CASES[activeTab].agent} agent.
-          </p>
-          <button
-            onClick={() => handleSelectUseCase(activeTab)}
-            className="px-6 py-3 bg-brand-blue text-white border-2 border-white font-bold shadow-brutal-sm hover:shadow-brutal active:translate-x-0.5 active:translate-y-0.5 transition-all"
-          >
-            Start Chat
-          </button>
-        </div>
-      </StateTransition>
-
       {/* Connecting state */}
       <StateTransition show={demoStatus === DEMO_STATES.CONNECTING} enter="fade" duration="fast">
         <div className="bg-slate-800/50 border-2 border-slate-600 p-4 text-center">
