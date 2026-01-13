@@ -35,6 +35,7 @@ export default function DemoAgent({
   onStopListening,
   onSendMessage,
   onCancel,
+  onStartInteractive,
 }) {
   const [textInput, setTextInput] = useState('');
   const [showTextInput, setShowTextInput] = useState(false);
@@ -295,21 +296,22 @@ export default function DemoAgent({
           </StateTransition>
         )}
 
-        {/* Simulated mode footer */}
-        {!isInteractive && messages.length === 0 && (
-          <StateTransition show={!isInteractive && messages.length === 0} enter="fade" duration="normal">
-            <div className="mt-4 flex items-center gap-4">
-              <button className={`w-11 h-11 ${style.buttonBg} ${
-                agentType === 'service' ? style.buttonTextColor : 'text-white'
-              } border-2 ${style.buttonBorder} flex items-center justify-center ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all`}>
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+        {/* Start interactive button - shown when not in interactive mode */}
+        {!isInteractive && (
+          <StateTransition show={!isInteractive} enter="fade" duration="normal">
+            <div className="mt-4 border-t-2 border-slate-700 pt-4">
+              <button
+                onClick={onStartInteractive}
+                className={`w-full flex items-center justify-center gap-3 py-3 ${style.buttonBg} ${
+                  agentType === 'service' || agentType === 'support' || agentType === 'operations' ? style.buttonTextColor : 'text-white'
+                } border-2 ${style.buttonBorder} font-bold ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all`}
+              >
+                {/* Keyboard icon */}
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
+                Start Chatting
               </button>
-              <span className="text-mono text-slate-500 text-sm">0:32</span>
-              <span className={`ml-auto px-3 py-1 ${style.accentBg} border ${style.accentBorder} ${style.accentText} text-xs font-mono`}>
-                {agentType === 'revenue' ? '94% CONV' : '4.8 CSAT'}
-              </span>
             </div>
           </StateTransition>
         )}
@@ -365,4 +367,6 @@ DemoAgent.propTypes = {
   onSendMessage: PropTypes.func,
   /** Callback to cancel current operation */
   onCancel: PropTypes.func,
+  /** Callback to start interactive mode */
+  onStartInteractive: PropTypes.func,
 };
