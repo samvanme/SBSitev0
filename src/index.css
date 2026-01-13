@@ -406,6 +406,31 @@
   }
 }
 
+/* Focus states for accessibility */
+.focus-brutal:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+.focus-brutal-dark:focus-visible {
+  outline: 3px solid #030712;
+  outline-offset: 2px;
+}
+
+/* Base focus-visible styles for interactive elements */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--brand-blue);
+  outline-offset: 0;
+}
+
 /* Reduced motion support - respect user preferences */
 @media (prefers-reduced-motion: reduce) {
   *,

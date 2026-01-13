@@ -87,6 +87,12 @@ export default {
       backdropBlur: {
         '3xl': '64px',
       },
+      outlineWidth: {
+        '3': '3px',
+      },
+      outlineOffset: {
+        '2': '2px',
+      },
     },
   },
   plugins: [],
