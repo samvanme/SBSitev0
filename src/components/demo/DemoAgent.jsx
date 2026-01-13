@@ -154,7 +154,7 @@ export default function DemoAgent({
   const isActiveState = ['listening', 'processing', 'responding'].includes(status);
 
   return (
-    <div className="relative bg-slate-900/50 border-0 sm:border-2 border-white/10 hover:border-white/20 transition-colors min-h-[400px] sm:h-[calc(100vh-180px)] sm:min-h-[500px] flex flex-col overflow-hidden">
+    <div className="relative bg-slate-900/50 border-0 sm:border-2 border-white/10 hover:border-white/20 transition-colors flex-1 sm:flex-none sm:h-[calc(100vh-180px)] sm:min-h-[500px] flex flex-col overflow-hidden">
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${style.accent}`}></div>
 
@@ -288,7 +288,7 @@ export default function DemoAgent({
         {/* Start interactive button - shown when not in interactive mode */}
         {!isInteractive && (
           <StateTransition show={!isInteractive} enter="fade" duration="normal">
-            <div className="mt-4 border-t-2 border-slate-700 pt-4">
+            <div className="mt-auto sm:mt-4 border-t-2 border-slate-700 pt-4">
               <button
                 onClick={onStartInteractive}
                 className={`w-full flex items-center justify-center gap-3 py-3 ${style.buttonBg} ${
