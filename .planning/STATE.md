@@ -3,8 +3,9 @@
 ## Current Status
 
 **Milestone**: 1 — AI-Native Website Launch
-**Phase**: 4 — Animation & State System
-**Status**: Complete
+**Phase**: 5 — AI Demo Integration
+**Plan**: 05-01 (Interactive Demo Architecture & UI Framework)
+**Status**: Planned
 
 ## Progress
 
@@ -14,25 +15,25 @@
 | 2 | Design System | ✅ Complete |
 | 3 | Section Redesign | ✅ Complete |
 | 4 | Animation & State System | ✅ Complete |
-| 5 | AI Demo Integration | ⏳ Pending |
+| 5 | AI Demo Integration | 🔄 In Progress |
 | 6 | Content & Lead Flow | ⏳ Pending |
 | 7 | Polish & Launch | ⏳ Pending |
 
 ## Context
 
 ### Last Action
-Phase 4-01 (Animation & State System) completed with 11 commits. Built comprehensive animation component library:
-- ThinkingState, ProgressIndicator, ConfidenceDisplay, StateTransition, Waveform components
-- Animation CSS variables and Tailwind keyframes
-- useInView hook for scroll-triggered animations
-- VoiceDemo refactored with thinking state indicators
-- Hero and VoiceDemo sections have entrance animations
+Phase 5-01 planned (Interactive Demo Architecture & UI Framework). Plan includes:
+- Demo component architecture with state machine (10 tasks)
+- DemoAgent, ToolCallDisplay, ConversationTranscript components
+- useDemoState and useDemoConnection hooks (mock implementation)
+- DemoController for simulated → interactive transition
+- Error/timeout/fallback state handling
 
 ### Next Action
-Plan Phase 5: AI Demo Integration
-- Run `/gsd:discuss-phase 5` to gather context
-- Research AI backend options (voice API, WebSocket vs polling)
-- Design demo architecture before implementation
+Execute Phase 5-01:
+- Run `/gsd:execute-plan .planning/phases/05-ai-demo-integration/05-01-PLAN.md`
+- Build interactive demo framework with mock backend
+- Backend integration (05-02) planned after infrastructure decision
 
 ### Blockers
 None
@@ -55,7 +56,9 @@ None
 - **Reduced motion**: All animations respect prefers-reduced-motion with static fallbacks
 
 ### Decisions Pending
-- AI backend choice for Phase 5 (requires research)
+- AI backend choice for Phase 5-02 (requires research)
+- WebSocket vs polling for real-time updates
+- Voice API integration (Web Speech API vs cloud service)
 - Form submission handling for Phase 6 (serverless vs CRM)
 
 ### Session History
@@ -64,6 +67,7 @@ None
 - 2026-01-12: Phase 3-A executed (8 tasks, 8 commits)
 - 2026-01-12: Phase 3-B executed (10 tasks, 7 commits)
 - 2026-01-12: Phase 4-01 executed (11 tasks, 11 commits)
+- 2026-01-12: Phase 5-01 planned (10 tasks)
 
 ---
 *Last updated: 2026-01-12*
