@@ -245,22 +245,12 @@ export default function DemoController({
 
     // Check if simulation is complete for this tab
     if (step >= script.length) {
-      // Check if we should advance to next tab
-      const nextIndex = carouselIndex + 1;
-      if (nextIndex < TAB_ORDER.length) {
-        // Advance to next tab after delay
-        autoAdvanceTimerRef.current = setTimeout(() => {
-          setCarouselIndex(nextIndex);
-          setActiveTab(TAB_ORDER[nextIndex]);
-        }, 1000);
-      } else {
-        // All tabs complete - show transition prompt
-        // Note: setState here is intentional - completing the simulation cycle
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setIsSimulating(false);
-        setShowTransitionPrompt(true);
-        setHighlightTabs(true);
-      }
+      // Tab simulation complete - stop and highlight tabs for manual selection
+      // Note: setState here is intentional - completing the simulation cycle
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setIsSimulating(false);
+      setShowTransitionPrompt(true);
+      setHighlightTabs(true);
       return;
     }
 
