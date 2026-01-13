@@ -33,8 +33,7 @@ export default function Hero() {
 
           {/* Headline - responsive typography */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-black uppercase tracking-tight text-white mb-4 sm:mb-6 leading-[0.9]">
-            AI That <span className="text-brand-blue">Works</span><br />
-            Inside Your CRM
+            AI Systems That <span className="text-brand-blue">Work</span>
           </h1>
 
           {/* Horizontal accent */}
@@ -42,8 +41,7 @@ export default function Hero() {
 
           {/* Single strong subheadline */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed mb-8 sm:mb-12 max-w-xl">
-            We build AI systems with you, not for you.
-            From strategy through production—integrated, measured, and supported.
+            In every part of your business.
           </p>
 
           {/* CTA Buttons - stack on mobile, ensure 44px+ touch targets */}
