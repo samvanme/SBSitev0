@@ -131,7 +131,7 @@ export default function DemoAgent({
   const isActiveState = ['listening', 'processing', 'responding'].includes(status);
 
   return (
-    <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors h-[65vh] min-h-[400px] flex flex-col">
+    <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors h-[65vh] min-h-[400px] flex flex-col overflow-hidden">
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${style.accent}`}></div>
 
@@ -203,13 +203,15 @@ export default function DemoAgent({
         </StateTransition>
 
         {/* Conversation transcript - grows to fill available space */}
-        <div className="mt-4 flex-1 flex flex-col min-h-0">
-          <ConversationTranscript
-            messages={messages}
-            isStreaming={isStreaming}
-            streamingText={streamingText}
-            agentAccent={style.transcriptAccent}
-          />
+        <div className="mt-4 flex-1 min-h-0 relative">
+          <div className="absolute inset-0">
+            <ConversationTranscript
+              messages={messages}
+              isStreaming={isStreaming}
+              streamingText={streamingText}
+              agentAccent={style.transcriptAccent}
+            />
+          </div>
         </div>
 
         {/* Input area - only show in interactive mode */}
