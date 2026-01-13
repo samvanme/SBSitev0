@@ -215,97 +215,101 @@ export default function DemoAgent({
         </div>
 
         {/* Input area - only show in interactive mode */}
-        <StateTransition show={isInteractive} enter="slide-up" duration="normal">
-          <div className="mt-4 border-t-2 border-slate-700 pt-4">
-            {/* Input toggle */}
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs text-slate-500 font-mono uppercase">
-                {showTextInput ? 'Text Input' : 'Voice Input'}
-              </span>
-              <button
-                onClick={() => setShowTextInput(!showTextInput)}
-                className="text-xs text-slate-500 hover:text-white font-mono transition-colors"
-              >
-                Switch to {showTextInput ? 'Voice' : 'Text'}
-              </button>
-            </div>
-
-            {/* Voice input */}
-            <StateTransition show={!showTextInput} enter="fade" duration="fast">
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={handleMicClick}
-                  disabled={isActiveState && status !== 'listening'}
-                  className={`w-12 h-12 ${style.buttonBg} ${
-                    agentType === 'service' ? style.buttonTextColor : 'text-white'
-                  } border-2 ${style.buttonBorder} flex items-center justify-center ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
-                  aria-label={status === 'listening' ? 'Stop listening' : 'Start listening'}
-                >
-                  {status === 'listening' ? (
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z" clipRule="evenodd"/>
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd"/>
-                    </svg>
-                  )}
-                </button>
-                <span className="text-xs text-slate-500 font-mono">
-                  {status === 'listening' ? 'Tap to stop' : 'Tap to speak'}
+        {isInteractive && (
+          <StateTransition show={isInteractive} enter="slide-up" duration="normal">
+            <div className="mt-4 border-t-2 border-slate-700 pt-4">
+              {/* Input toggle */}
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs text-slate-500 font-mono uppercase">
+                  {showTextInput ? 'Text Input' : 'Voice Input'}
                 </span>
-                {isActiveState && status !== 'listening' && onCancel && (
-                  <button
-                    onClick={onCancel}
-                    className="ml-auto px-3 py-1 text-xs text-slate-500 hover:text-white border border-slate-600 hover:border-slate-500 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                )}
-              </div>
-            </StateTransition>
-
-            {/* Text input */}
-            <StateTransition show={showTextInput} enter="fade" duration="fast">
-              <form onSubmit={handleSubmit} className="flex gap-2">
-                <input
-                  type="text"
-                  value={textInput}
-                  onChange={(e) => setTextInput(e.target.value)}
-                  placeholder="Type your message..."
-                  disabled={isActiveState}
-                  className="flex-1 bg-slate-800 border-2 border-slate-700 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-slate-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
-                />
                 <button
-                  type="submit"
-                  disabled={!textInput.trim() || isActiveState}
-                  className={`px-4 py-2 ${style.buttonBg} ${
-                    agentType === 'service' ? style.buttonTextColor : 'text-white'
-                  } border-2 ${style.buttonBorder} font-bold text-sm ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                  onClick={() => setShowTextInput(!showTextInput)}
+                  className="text-xs text-slate-500 hover:text-white font-mono transition-colors"
                 >
-                  Send
+                  Switch to {showTextInput ? 'Voice' : 'Text'}
                 </button>
-              </form>
-            </StateTransition>
-          </div>
-        </StateTransition>
+              </div>
+
+              {/* Voice input */}
+              <StateTransition show={!showTextInput} enter="fade" duration="fast">
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={handleMicClick}
+                    disabled={isActiveState && status !== 'listening'}
+                    className={`w-12 h-12 ${style.buttonBg} ${
+                      agentType === 'service' ? style.buttonTextColor : 'text-white'
+                    } border-2 ${style.buttonBorder} flex items-center justify-center ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                    aria-label={status === 'listening' ? 'Stop listening' : 'Start listening'}
+                  >
+                    {status === 'listening' ? (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z" clipRule="evenodd"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clipRule="evenodd"/>
+                      </svg>
+                    )}
+                  </button>
+                  <span className="text-xs text-slate-500 font-mono">
+                    {status === 'listening' ? 'Tap to stop' : 'Tap to speak'}
+                  </span>
+                  {isActiveState && status !== 'listening' && onCancel && (
+                    <button
+                      onClick={onCancel}
+                      className="ml-auto px-3 py-1 text-xs text-slate-500 hover:text-white border border-slate-600 hover:border-slate-500 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              </StateTransition>
+
+              {/* Text input */}
+              <StateTransition show={showTextInput} enter="fade" duration="fast">
+                <form onSubmit={handleSubmit} className="flex gap-2">
+                  <input
+                    type="text"
+                    value={textInput}
+                    onChange={(e) => setTextInput(e.target.value)}
+                    placeholder="Type your message..."
+                    disabled={isActiveState}
+                    className="flex-1 bg-slate-800 border-2 border-slate-700 px-3 py-2 text-sm text-white placeholder-slate-500 focus:border-slate-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!textInput.trim() || isActiveState}
+                    className={`px-4 py-2 ${style.buttonBg} ${
+                      agentType === 'service' ? style.buttonTextColor : 'text-white'
+                    } border-2 ${style.buttonBorder} font-bold text-sm ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                  >
+                    Send
+                  </button>
+                </form>
+              </StateTransition>
+            </div>
+          </StateTransition>
+        )}
 
         {/* Simulated mode footer */}
-        <StateTransition show={!isInteractive && messages.length === 0} enter="fade" duration="normal">
-          <div className="mt-4 flex items-center gap-4">
-            <button className={`w-11 h-11 ${style.buttonBg} ${
-              agentType === 'service' ? style.buttonTextColor : 'text-white'
-            } border-2 ${style.buttonBorder} flex items-center justify-center ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all`}>
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-              </svg>
-            </button>
-            <span className="text-mono text-slate-500 text-sm">0:32</span>
-            <span className={`ml-auto px-3 py-1 ${style.accentBg} border ${style.accentBorder} ${style.accentText} text-xs font-mono`}>
-              {agentType === 'revenue' ? '94% CONV' : '4.8 CSAT'}
-            </span>
-          </div>
-        </StateTransition>
+        {!isInteractive && messages.length === 0 && (
+          <StateTransition show={!isInteractive && messages.length === 0} enter="fade" duration="normal">
+            <div className="mt-4 flex items-center gap-4">
+              <button className={`w-11 h-11 ${style.buttonBg} ${
+                agentType === 'service' ? style.buttonTextColor : 'text-white'
+              } border-2 ${style.buttonBorder} flex items-center justify-center ${style.buttonShadow} active:translate-x-0.5 active:translate-y-0.5 transition-all`}>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                </svg>
+              </button>
+              <span className="text-mono text-slate-500 text-sm">0:32</span>
+              <span className={`ml-auto px-3 py-1 ${style.accentBg} border ${style.accentBorder} ${style.accentText} text-xs font-mono`}>
+                {agentType === 'revenue' ? '94% CONV' : '4.8 CSAT'}
+              </span>
+            </div>
+          </StateTransition>
+        )}
       </div>
     </div>
   );
