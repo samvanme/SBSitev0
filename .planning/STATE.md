@@ -4,7 +4,7 @@
 
 **Milestone**: 1 — AI-Native Website Launch
 **Phase**: 5 — AI Demo Integration
-**Plan**: 05-01 (Interactive Demo Architecture & UI Framework)
+**Plan**: 05-01.1 (Demo UI Refinements)
 **Status**: Complete
 
 ## Progress
@@ -15,23 +15,18 @@
 | 2 | Design System | ✅ Complete |
 | 3 | Section Redesign | ✅ Complete |
 | 4 | Animation & State System | ✅ Complete |
-| 5 | AI Demo Integration | 🔄 In Progress (05-01 complete) |
+| 5 | AI Demo Integration | 🔄 In Progress (05-01, 05-01.1 complete) |
 | 6 | Content & Lead Flow | ⏳ Pending |
 | 7 | Polish & Launch | ⏳ Pending |
 
 ## Context
 
 ### Last Action
-Phase 5-01 executed (Interactive Demo Architecture & UI Framework). 10 tasks, 10 commits:
-- Created demo component architecture documentation
-- Implemented useDemoState hook (finite state machine)
-- Created ToolCallDisplay, ConversationTranscript components
-- Created DemoError, DemoFallback, DemoTimeout components
-- Implemented useDemoConnection hook with mock mode
-- Created DemoAgent component (main interactive card)
-- Created DemoController (orchestrates hybrid demo flow)
-- Refactored VoiceDemo to use new architecture
-- Verified build and lint pass
+Plan 05-01.1 executed (Demo UI Refinements). 4 tasks, 4 commits:
+- Dark theme scrollbar styling (WebKit + Firefox support)
+- Bottom-anchored chat flow using flex-col-reverse
+- Minimalist avatar icons for agent/user distinction
+- 8 rotating tool call scenarios (4 per agent)
 
 ### Next Action
 Plan Phase 5-02 (Backend Integration):
@@ -77,6 +72,7 @@ None
 - 2026-01-12: Phase 4-01 executed (11 tasks, 11 commits)
 - 2026-01-12: Phase 5-01 planned (10 tasks)
 - 2026-01-13: Phase 5-01 executed (10 tasks, 10 commits)
+- 2026-01-13: Plan 05-01.1 executed (4 tasks, 4 commits)
 
 ---
 *Last updated: 2026-01-13*

@@ -74,15 +74,18 @@ Transform the marketing landing page into an AI-native experience that demonstra
 ### Phase 5: AI Demo Integration
 **Goal**: Embed live AI agent demo as first-class UI element
 
-- Design demo architecture (backend requirements, API structure)
-- Build voice/chat hybrid component with visible tool calls
-- Implement thinking state visualization
-- Create hybrid demo flow: simulated intro → real interaction
-- Handle edge cases (errors, timeouts, fallbacks)
+- ✅ Design demo architecture (backend requirements, API structure)
+- ✅ Build voice/chat hybrid component with visible tool calls
+- ✅ Implement thinking state visualization
+- ✅ Create hybrid demo flow: simulated intro → real interaction
+- ✅ Handle edge cases (errors, timeouts, fallbacks)
+- ✅ UI polish: dark scrollbars, bottom-anchored chat, avatar icons, rotating scenarios
 - Connect to AI backend (requires infrastructure decision)
 
 **Research needed**: Yes — AI backend options, WebSocket vs polling, voice API integration
 **Estimated scope**: Large
+
+**Plans complete**: 05-01 (architecture & UI framework), 05-01.1 (UI refinements)
 
 ---
 

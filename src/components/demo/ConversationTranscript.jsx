@@ -1,6 +1,35 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { StateTransition, ThinkingState } from '../animations';
+
+// Minimalist avatar icons - post-modern line art style (defined outside component for stability)
+const AgentIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+    {/* Circuit/chip style AI icon */}
+    <rect x="4" y="4" width="12" height="12" strokeLinecap="square" />
+    <circle cx="10" cy="10" r="2" />
+    <line x1="10" y1="2" x2="10" y2="4" strokeLinecap="square" />
+    <line x1="10" y1="16" x2="10" y2="18" strokeLinecap="square" />
+    <line x1="2" y1="10" x2="4" y2="10" strokeLinecap="square" />
+    <line x1="16" y1="10" x2="18" y2="10" strokeLinecap="square" />
+  </svg>
+);
+
+AgentIcon.propTypes = {
+  className: PropTypes.string,
+};
+
+const UserIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+    {/* Simple person silhouette */}
+    <circle cx="10" cy="6" r="3" />
+    <path d="M4 18v-2c0-2.2 2.7-4 6-4s6 1.8 6 4v2" strokeLinecap="square" />
+  </svg>
+);
+
+UserIcon.propTypes = {
+  className: PropTypes.string,
+};
 
 /**
  * ConversationTranscript - Streaming conversation display
@@ -23,17 +52,9 @@ export default function ConversationTranscript({
   agentAccent = 'brand',
 }) {
   const scrollRef = useRef(null);
-  const bottomRef = useRef(null);
 
-  // Auto-scroll to bottom when messages change or streaming updates
-  useEffect(() => {
-    if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-      });
-    }
-  }, [messages, streamingText]);
+  // With flex-col-reverse, scroll position 0 shows the latest content (visual bottom)
+  // Auto-scroll happens naturally when new content arrives at position 0
 
   // Accent colors for agent messages
   const accentStyles = {
@@ -41,11 +62,13 @@ export default function ConversationTranscript({
       border: 'border-brand-blue',
       bg: 'bg-brand-blue/10',
       accent: 'bg-brand-blue',
+      iconColor: 'text-brand-blue',
     },
     white: {
       border: 'border-white/30',
       bg: 'bg-white/5',
       accent: 'bg-white',
+      iconColor: 'text-white',
     },
   };
 
@@ -61,23 +84,71 @@ export default function ConversationTranscript({
     });
   };
 
+  // Custom scrollbar styles for brutalist dark theme
+  const scrollbarStyles = {
+    // Firefox
+    scrollbarWidth: 'thin',
+    scrollbarColor: 'rgb(51 65 85 / 0.5) transparent',
+  };
+
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col gap-3 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
+      className="demo-transcript flex flex-col-reverse gap-3 max-h-48 overflow-y-auto"
+      style={scrollbarStyles}
       role="log"
       aria-label="Conversation transcript"
       aria-live="polite"
     >
-      {/* Empty state */}
-      {messages.length === 0 && !isStreaming && (
-        <p className="text-center text-slate-500 text-sm py-4 font-mono">
-          Conversation will appear here...
-        </p>
-      )}
+      {/* WebKit scrollbar styling */}
+      <style>{`
+        .demo-transcript::-webkit-scrollbar {
+          width: 6px;
+        }
+        .demo-transcript::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .demo-transcript::-webkit-scrollbar-thumb {
+          background: rgb(51 65 85 / 0.3);
+          border: none;
+        }
+        .demo-transcript::-webkit-scrollbar-thumb:hover {
+          background: rgb(51 65 85 / 0.6);
+        }
+        .demo-transcript::-webkit-scrollbar-thumb:active {
+          background: rgb(71 85 105 / 0.8);
+        }
+      `}</style>
 
-      {/* Message list */}
-      {messages.map((message, index) => (
+      {/* Streaming message - appears first in reverse order = visual bottom */}
+      <StateTransition show={isStreaming} enter="slide-up" duration="fast">
+        <div className="flex justify-start">
+          <div className={`max-w-[85%] ${accent.bg} border-2 ${accent.border}`}>
+            {/* Streaming header */}
+            <div className="flex items-center justify-between gap-4 px-3 py-1.5 border-b border-slate-700/50">
+              <span className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase">
+                <AgentIcon className={`w-4 h-4 ${accent.iconColor}`} />
+                Agent
+              </span>
+              <ThinkingState variant="typing" size="sm" label="Agent is typing" />
+            </div>
+
+            {/* Streaming content */}
+            <div className="px-3 py-2">
+              <p className="text-sm text-white leading-relaxed">
+                {streamingText}
+                <span className="inline-block w-2 h-4 bg-brand-blue ml-0.5 animate-thinking-typing motion-reduce:animate-none" />
+              </p>
+            </div>
+
+            {/* Accent bar */}
+            <div className={`h-0.5 ${accent.accent}`}></div>
+          </div>
+        </div>
+      </StateTransition>
+
+      {/* Message list - reversed so newest appears at visual bottom */}
+      {[...messages].reverse().map((message, index) => (
         <StateTransition
           key={message.id}
           show={true}
@@ -96,7 +167,12 @@ export default function ConversationTranscript({
             >
               {/* Message header */}
               <div className="flex items-center justify-between gap-4 px-3 py-1.5 border-b border-slate-700/50">
-                <span className="text-xs font-mono text-slate-500 uppercase">
+                <span className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase">
+                  {message.role === 'user' ? (
+                    <UserIcon className="w-4 h-4 text-slate-400" />
+                  ) : (
+                    <AgentIcon className={`w-4 h-4 ${accent.iconColor}`} />
+                  )}
                   {message.role === 'user' ? 'You' : 'Agent'}
                 </span>
                 <span className="text-xs font-mono text-slate-600">
@@ -125,34 +201,12 @@ export default function ConversationTranscript({
         </StateTransition>
       ))}
 
-      {/* Streaming message */}
-      <StateTransition show={isStreaming} enter="slide-up" duration="fast">
-        <div className="flex justify-start">
-          <div className={`max-w-[85%] ${accent.bg} border-2 ${accent.border}`}>
-            {/* Streaming header */}
-            <div className="flex items-center justify-between gap-4 px-3 py-1.5 border-b border-slate-700/50">
-              <span className="text-xs font-mono text-slate-500 uppercase">
-                Agent
-              </span>
-              <ThinkingState variant="typing" size="sm" label="Agent is typing" />
-            </div>
-
-            {/* Streaming content */}
-            <div className="px-3 py-2">
-              <p className="text-sm text-white leading-relaxed">
-                {streamingText}
-                <span className="inline-block w-2 h-4 bg-brand-blue ml-0.5 animate-thinking-typing motion-reduce:animate-none" />
-              </p>
-            </div>
-
-            {/* Accent bar */}
-            <div className={`h-0.5 ${accent.accent}`}></div>
-          </div>
-        </div>
-      </StateTransition>
-
-      {/* Scroll anchor */}
-      <div ref={bottomRef} className="h-0" />
+      {/* Empty state - appears last in reversed order = visual top when no content */}
+      {messages.length === 0 && !isStreaming && (
+        <p className="text-center text-slate-500 text-sm py-4 font-mono">
+          Conversation will appear here...
+        </p>
+      )}
     </div>
   );
 }
