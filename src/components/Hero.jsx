@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Grid overlay - stark brutalist grid, responsive sizing */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
 
-      <div className="container-brutal relative z-10 py-16 sm:py-20 lg:py-28">
+      <div className="relative z-10 py-16 sm:py-20 lg:py-28 px-6 lg:px-12 xl:px-20 max-w-[1600px] mx-auto">
         {/* Thick vertical accent line - hidden on mobile, visible on sm+ */}
         <div className="hidden sm:block absolute left-6 lg:left-12 top-16 sm:top-20 bottom-16 sm:bottom-20 w-1 bg-brand-blue"></div>
 
