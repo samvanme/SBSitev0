@@ -44,22 +44,25 @@ export default function StateTransition({
   const getAnimationClasses = () => {
     const baseTransition = `transition-all duration-${durationMs === 150 ? '150' : durationMs === 300 ? '300' : '500'}`;
 
+    // Base collapse classes when hidden - prevents taking up space in layout
+    const collapseHidden = 'h-0 overflow-hidden';
+
     const animations = {
       fade: {
-        hidden: 'opacity-0 pointer-events-none',
-        visible: 'opacity-100 pointer-events-auto',
+        hidden: `opacity-0 pointer-events-none ${collapseHidden}`,
+        visible: 'opacity-100 pointer-events-auto h-auto',
       },
       'slide-up': {
-        hidden: 'opacity-0 translate-y-4 pointer-events-none',
-        visible: 'opacity-100 translate-y-0 pointer-events-auto',
+        hidden: `opacity-0 translate-y-4 pointer-events-none ${collapseHidden}`,
+        visible: 'opacity-100 translate-y-0 pointer-events-auto h-auto',
       },
       'slide-down': {
-        hidden: 'opacity-0 -translate-y-4 pointer-events-none',
-        visible: 'opacity-100 translate-y-0 pointer-events-auto',
+        hidden: `opacity-0 -translate-y-4 pointer-events-none ${collapseHidden}`,
+        visible: 'opacity-100 translate-y-0 pointer-events-auto h-auto',
       },
       scale: {
-        hidden: 'opacity-0 scale-95 pointer-events-none',
-        visible: 'opacity-100 scale-100 pointer-events-auto',
+        hidden: `opacity-0 scale-95 pointer-events-none ${collapseHidden}`,
+        visible: 'opacity-100 scale-100 pointer-events-auto h-auto',
       },
     };
 
