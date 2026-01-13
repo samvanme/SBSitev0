@@ -8,6 +8,7 @@ This directory contains custom skills and commands for Claude Code, extending it
 .claude/
 ├── commands/                    # Invocable skills and commands
 │   ├── design/                  # Design-focused skills
+│   ├── qa/                      # QA, debugging, and mobile optimization skills
 │   ├── gsd/                     # Get Shit Done workflow commands
 │   └── context-engineering/     # Context engineering skills
 ├── get-shit-done/               # GSD framework support files
@@ -23,6 +24,7 @@ Invoke skills using slash commands:
 
 ```
 /design:frontend-design          # Design skills
+/qa:frontend-qa                  # QA, debugging, and mobile optimization
 /gsd:progress                    # GSD workflow commands
 /context-engineering:multi-agent-patterns  # Context engineering skills
 ```
@@ -36,6 +38,16 @@ Creative and production-focused design capabilities.
 | Command | Description |
 |---------|-------------|
 | `/design:frontend-design` | Create distinctive, production-grade frontend interfaces with high design quality. Generates creative, polished code that avoids generic AI aesthetics. |
+
+---
+
+## QA Skills
+
+Frontend debugging, mobile optimization, and quality assurance capabilities.
+
+| Command | Description |
+|---------|-------------|
+| `/qa:frontend-qa` | Debug frontend issues, optimize for mobile devices, and perform comprehensive QA. Use for troubleshooting UI bugs, responsive design issues, accessibility checks, cross-browser testing, and performance optimization. |
 
 ---
 
