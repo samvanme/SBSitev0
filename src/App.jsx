@@ -1,8 +1,9 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VoiceDemo from './components/VoiceDemo';
+import { useAnalytics } from './hooks/useAnalytics';
 
 // Lazy load below-fold sections for better initial load performance
 const UseCases = lazy(() => import('./components/UseCases'));
@@ -17,6 +18,17 @@ function SectionFallback() {
 }
 
 function App() {
+  const { track } = useAnalytics();
+
+  // Track page view on mount
+  useEffect(() => {
+    track('page_view', {
+      page: 'home',
+      path: window.location.pathname,
+      referrer: document.referrer || null,
+    });
+  }, [track]);
+
   return (
     <ErrorBoundary>
       {/* Skip to content link for keyboard navigation */}
