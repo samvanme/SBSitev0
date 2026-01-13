@@ -43,6 +43,28 @@
 }
 
 @layer components {
+  /* Skip link for keyboard navigation - sr-only until focused */
+  .skip-link {
+    position: absolute;
+    top: -9999px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background: white;
+    color: #030712;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    border: 3px solid #030712;
+    box-shadow: 4px 4px 0 #030712;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+    outline: none;
+  }
+
   /* Grid system - 12 column with visible structure */
   .grid-brutal {
     display: grid;
