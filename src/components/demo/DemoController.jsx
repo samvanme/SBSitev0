@@ -28,62 +28,62 @@ import DemoTimeout from './DemoTimeout';
 const REVENUE_SCENARIOS = [
   // Scenario 1: Pricing lookup
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 1500 },
-    { role: 'user', content: "I'm interested in learning about your enterprise plan.", delay: 2500 },
-    { role: 'assistant', content: "I'd be happy to help with that! Let me pull up the details for our enterprise offering.", delay: 2000, toolCall: { name: 'fetch_pricing', params: { plan: 'enterprise' } } },
-    { role: 'assistant', content: "Our enterprise plan includes unlimited seats, dedicated support, and custom integrations. Would you like me to schedule a demo call to discuss your specific needs?", delay: 3000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 2000 },
+    { role: 'user', content: "I'm interested in learning about your enterprise plan.", delay: 3500 },
+    { role: 'assistant', content: "I'd be happy to help with that! Let me pull up the details for our enterprise offering.", delay: 3000, toolCall: { name: 'fetch_pricing', params: { plan: 'enterprise' } } },
+    { role: 'assistant', content: "Our enterprise plan includes unlimited seats, dedicated support, and custom integrations. Would you like me to schedule a demo call to discuss your specific needs?", delay: 4000 },
   ],
   // Scenario 2: CRM lookup
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 1500 },
-    { role: 'user', content: "Hi, I spoke with someone last week about a custom package.", delay: 2500 },
-    { role: 'assistant', content: "Of course! Let me pull up your conversation history.", delay: 2000, toolCall: { name: 'crm_lookup', params: { type: 'recent_interactions' } } },
-    { role: 'assistant', content: "I found your previous conversation with our team. You were discussing a 50-seat package with API access. Would you like to continue where you left off?", delay: 3000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 2000 },
+    { role: 'user', content: "Hi, I spoke with someone last week about a custom package.", delay: 3500 },
+    { role: 'assistant', content: "Of course! Let me pull up your conversation history.", delay: 3000, toolCall: { name: 'crm_lookup', params: { type: 'recent_interactions' } } },
+    { role: 'assistant', content: "I found your previous conversation with our team. You were discussing a 50-seat package with API access. Would you like to continue where you left off?", delay: 4000 },
   ],
   // Scenario 3: Schedule demo
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 1500 },
-    { role: 'user', content: "I'd like to schedule a demo with your team.", delay: 2500 },
-    { role: 'assistant', content: "I'll check our team's availability right now.", delay: 2000, toolCall: { name: 'schedule_demo', params: { duration: '30min' } } },
-    { role: 'assistant', content: "I have availability tomorrow at 2pm or Thursday at 10am. Which works better for you?", delay: 3000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 2000 },
+    { role: 'user', content: "I'd like to schedule a demo with your team.", delay: 3500 },
+    { role: 'assistant', content: "I'll check our team's availability right now.", delay: 3000, toolCall: { name: 'schedule_demo', params: { duration: '30min' } } },
+    { role: 'assistant', content: "I have availability tomorrow at 2pm or Thursday at 10am. Which works better for you?", delay: 4000 },
   ],
   // Scenario 4: Send quote
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 1500 },
-    { role: 'user', content: "Can you send me a quote for 25 users?", delay: 2500 },
-    { role: 'assistant', content: "Absolutely! Let me generate a custom quote for you.", delay: 2000, toolCall: { name: 'generate_quote', params: { seats: 25, plan: 'business' } } },
-    { role: 'assistant', content: "I've prepared a quote for 25 seats on our Business plan. I'm sending it to your email now. The quote is valid for 30 days.", delay: 3000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI sales assistant. How can I help you today?", delay: 2000 },
+    { role: 'user', content: "Can you send me a quote for 25 users?", delay: 3500 },
+    { role: 'assistant', content: "Absolutely! Let me generate a custom quote for you.", delay: 3000, toolCall: { name: 'generate_quote', params: { seats: 25, plan: 'business' } } },
+    { role: 'assistant', content: "I've prepared a quote for 25 seats on our Business plan. I'm sending it to your email now. The quote is valid for 30 days.", delay: 4000 },
   ],
 ];
 
 const SERVICE_SCENARIOS = [
   // Scenario 1: Order status
   [
-    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 1500 },
-    { role: 'user', content: "My order hasn't arrived yet and it's been two weeks.", delay: 2500 },
-    { role: 'assistant', content: "I apologize for the inconvenience. Let me look up your order right away.", delay: 2000, toolCall: { name: 'lookup_order', params: { status: 'delayed' } } },
-    { role: 'assistant', content: "I found your order - there was a shipping delay. I've expedited a replacement that will arrive within 2 business days. Is there anything else I can help with?", delay: 3500 },
+    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 2000 },
+    { role: 'user', content: "My order hasn't arrived yet and it's been two weeks.", delay: 3500 },
+    { role: 'assistant', content: "I apologize for the inconvenience. Let me look up your order right away.", delay: 3000, toolCall: { name: 'lookup_order', params: { status: 'delayed' } } },
+    { role: 'assistant', content: "I found your order - there was a shipping delay. I've expedited a replacement that will arrive within 2 business days. Is there anything else I can help with?", delay: 4500 },
   ],
   // Scenario 2: Shipping tracking
   [
-    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 1500 },
-    { role: 'user', content: "Where is my package? The tracking hasn't updated in days.", delay: 2500 },
-    { role: 'assistant', content: "Let me check the tracking details for you.", delay: 2000, toolCall: { name: 'track_shipment', params: { carrier: 'auto-detect' } } },
-    { role: 'assistant', content: "Your package is currently at the local distribution center and is scheduled for delivery tomorrow. The tracking delay was due to a system sync issue.", delay: 3500 },
+    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 2000 },
+    { role: 'user', content: "Where is my package? The tracking hasn't updated in days.", delay: 3500 },
+    { role: 'assistant', content: "Let me check the tracking details for you.", delay: 3000, toolCall: { name: 'track_shipment', params: { carrier: 'auto-detect' } } },
+    { role: 'assistant', content: "Your package is currently at the local distribution center and is scheduled for delivery tomorrow. The tracking delay was due to a system sync issue.", delay: 4500 },
   ],
   // Scenario 3: Process refund
   [
-    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 1500 },
-    { role: 'user', content: "I need to return an item and get a refund.", delay: 2500 },
-    { role: 'assistant', content: "I can help with that. Let me start the refund process.", delay: 2000, toolCall: { name: 'process_refund', params: { type: 'full', reason: 'return' } } },
-    { role: 'assistant', content: "I've initiated your refund - it will appear in your account within 3-5 business days. I'm also emailing you a prepaid return label.", delay: 3500 },
+    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 2000 },
+    { role: 'user', content: "I need to return an item and get a refund.", delay: 3500 },
+    { role: 'assistant', content: "I can help with that. Let me start the refund process.", delay: 3000, toolCall: { name: 'process_refund', params: { type: 'full', reason: 'return' } } },
+    { role: 'assistant', content: "I've initiated your refund - it will appear in your account within 3-5 business days. I'm also emailing you a prepaid return label.", delay: 4500 },
   ],
   // Scenario 4: Create support ticket
   [
-    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 1500 },
-    { role: 'user', content: "I'm having a technical issue with the product.", delay: 2500 },
-    { role: 'assistant', content: "I'll create a support ticket and connect you with our technical team.", delay: 2000, toolCall: { name: 'create_ticket', params: { priority: 'high', category: 'technical' } } },
-    { role: 'assistant', content: "I've created ticket #4827 and flagged it as high priority. A specialist will reach out within 2 hours. Is there anything else I can document for them?", delay: 3500 },
+    { role: 'assistant', content: "Hi there! I'm Sarah, here to help resolve any issues. What can I assist you with?", delay: 2000 },
+    { role: 'user', content: "I'm having a technical issue with the product.", delay: 3500 },
+    { role: 'assistant', content: "I'll create a support ticket and connect you with our technical team.", delay: 3000, toolCall: { name: 'create_ticket', params: { priority: 'high', category: 'technical' } } },
+    { role: 'assistant', content: "I've created ticket #4827 and flagged it as high priority. A specialist will reach out within 2 hours. Is there anything else I can document for them?", delay: 4500 },
   ],
 ];
 
