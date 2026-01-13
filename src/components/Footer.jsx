@@ -16,9 +16,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10 sm:mb-12">
           {/* Brand Column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="text-xl sm:text-2xl font-display font-bold text-white mb-4">
+            <a href={import.meta.env.BASE_URL} className="block text-xl sm:text-2xl font-display font-bold text-white mb-4 hover:text-brand-blue transition-colors" aria-label="StrataBlue home">
               StrataBlue AI
-            </div>
+            </a>
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed mb-6 max-w-xs">
               AI voice agents for revenue and service operations. Integrated. Measured. Governed.
             </p>

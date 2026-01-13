@@ -5,7 +5,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/95 border-b border-white/10">
       <div className="container-brutal">
         <div className="flex items-center justify-between h-20">
-          <a href="/" className="flex items-center" aria-label="StrataBlue home">
+          <a href={import.meta.env.BASE_URL} className="flex items-center" aria-label="StrataBlue home">
             <img
               src={`${import.meta.env.BASE_URL}stratablue-logo-white.png`}
               alt="StrataBlue"
