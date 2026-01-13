@@ -3,9 +3,9 @@
 ## Current Status
 
 **Milestone**: 1 — AI-Native Website Launch
-**Phase**: 5 — AI Demo Integration
-**Plan**: 05-01.1 (Demo UI Refinements)
-**Status**: Complete
+**Phase**: 6 — Content & Lead Flow
+**Plan**: None (phase not yet planned)
+**Status**: Ready to plan
 
 ## Progress
 
@@ -15,27 +15,23 @@
 | 2 | Design System | ✅ Complete |
 | 3 | Section Redesign | ✅ Complete |
 | 4 | Animation & State System | ✅ Complete |
-| 5 | AI Demo Integration | 🔄 In Progress (05-01, 05-01.1 complete) |
-| 6 | Content & Lead Flow | ⏳ Pending |
+| 5 | AI Demo Integration | ⏸️ Paused (UI done, backend deferred) |
+| 6 | Content & Lead Flow | 🔄 In Progress |
 | 7 | Polish & Launch | ⏳ Pending |
 
 ## Context
 
 ### Last Action
-Plan 05-01.1 executed (Demo UI Refinements). 4 tasks, 4 commits:
-- Dark theme scrollbar styling (WebKit + Firefox support)
-- Bottom-anchored chat flow using flex-col-reverse
-- Minimalist avatar icons for agent/user distinction
-- 8 rotating tool call scenarios (4 per agent)
+Phase 5 UI work complete (05-01, 05-01.1). Backend integration deferred.
+User decision: Skip backend for now, proceed to Phase 6.
 
 ### Next Action
-Plan Phase 5-02 (Backend Integration):
-- Decide on connection mode: WebSocket vs polling
-- Choose voice API: Web Speech API vs cloud service
-- Select AI backend for agent responses
-- Implement real connection and tool calls
-
-OR skip to Phase 6 if demo improvements can wait.
+Plan Phase 6 (Content & Lead Flow):
+- Partner vs vendor differentiation messaging
+- End-to-end solution narrative
+- Industry/vertical capability showcase
+- Consultation form integrated into experience
+- Form submission handling
 
 ### Blockers
 None
