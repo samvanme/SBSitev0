@@ -7,5 +7,17 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base: env.VITE_BASE_URL || '/',
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // React core - changes infrequently
+            'react-vendor': ['react', 'react-dom'],
+            // Prop-types - development dependency often tree-shaken in prod
+            'vendor': ['prop-types'],
+          },
+        },
+      },
+    },
   }
 })
