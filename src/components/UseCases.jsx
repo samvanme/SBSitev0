@@ -65,7 +65,7 @@ export default function UseCases() {
 
       <div className="container-brutal relative z-10">
         {/* Vertical accent line - hidden on mobile */}
-        <div className="hidden sm:block absolute left-6 lg:left-12 top-0 bottom-0 w-1 bg-brand-blue"></div>
+        <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-1 bg-brand-blue"></div>
 
         {/* Section Header - asymmetric, left-aligned */}
         <div className="mb-10 sm:mb-16 max-w-2xl sm:pl-6 lg:pl-8">
