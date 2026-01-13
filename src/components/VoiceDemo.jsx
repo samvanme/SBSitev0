@@ -31,7 +31,7 @@ export default function VoiceDemo() {
   }, []);
 
   return (
-    <section className="min-h-[100dvh] sm:min-h-0 sm:py-16 lg:py-36 relative overflow-hidden flex flex-col" id="demo">
+    <section className="min-h-screen sm:min-h-0 sm:py-16 lg:py-36 relative overflow-hidden" id="demo">
       {/* Grid overlay - responsive sizing */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
 
@@ -60,10 +60,10 @@ export default function VoiceDemo() {
         </div>
       </div>
 
-      {/* Demo controller - full viewport on mobile, contained on larger screens */}
+      {/* Demo controller - full width on desktop for Claude/ChatGPT-like experience */}
       <div
         ref={demoRef}
-        className={`relative z-10 px-0 sm:px-6 lg:px-12 max-w-7xl sm:mx-auto flex-1 flex flex-col transition-all duration-700 motion-reduce:transition-none ${
+        className={`relative z-10 px-4 sm:px-6 lg:px-12 xl:px-20 max-w-[1600px] mx-auto transition-all duration-700 motion-reduce:transition-none ${
           isDemoInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-8'
