@@ -14,19 +14,23 @@ import PropTypes from 'prop-types';
  *   <SlideThree />
  * </DemoCarousel>
  */
+// Check reduced motion preference (runs once on mount)
+const getInitialReducedMotion = () => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
 export default function DemoCarousel({
   activeIndex = 0,
   children,
   onTransitionEnd,
 }) {
   const containerRef = useRef(null);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(getInitialReducedMotion);
 
-  // Check reduced motion preference
+  // Subscribe to reduced motion changes
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-
     const handleChange = (e) => setPrefersReducedMotion(e.matches);
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);

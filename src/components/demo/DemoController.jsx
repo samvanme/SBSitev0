@@ -224,9 +224,11 @@ export default function DemoController({
   });
 
   // Auto-start simulated demo
+  // Note: setState here is intentional - we're synchronizing with the demo state machine
   useEffect(() => {
     if (autoStart && demoStatus === DEMO_STATES.IDLE) {
       send(DEMO_EVENTS.START_SIMULATED);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsSimulating(true);
     }
   }, [autoStart, demoStatus, send]);
@@ -253,6 +255,8 @@ export default function DemoController({
         }, 1000);
       } else {
         // All tabs complete - show transition prompt
+        // Note: setState here is intentional - completing the simulation cycle
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsSimulating(false);
         setShowTransitionPrompt(true);
         setHighlightTabs(true);

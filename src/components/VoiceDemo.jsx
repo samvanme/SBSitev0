@@ -20,8 +20,8 @@ export default function VoiceDemo() {
   const [headerRef, isHeaderInView] = useInView({ threshold: 0.2 });
   const [demoRef, isDemoInView] = useInView({ threshold: 0.1 });
 
-  // Track demo mode for analytics/logging
-  const [demoMode, setDemoMode] = useState('simulated');
+  // Track demo mode for analytics/logging (unused variable prefixed)
+  const [_demoMode, setDemoMode] = useState('simulated');
 
   // Handle mode changes
   const handleModeChange = useCallback((mode) => {

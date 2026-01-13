@@ -255,7 +255,6 @@ function useMockConnection({
 export function useDemoConnection({
   mode = 'mock',
   // endpoint is reserved for future WebSocket/polling implementations
-  // eslint-disable-next-line no-unused-vars
   endpoint: _endpoint,
   onMessage,
   onError,
