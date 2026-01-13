@@ -31,25 +31,25 @@ const TAB_ORDER = ['revenue', 'support', 'operations'];
 // Rotating simulated conversation scenarios
 const REVENUE_SCENARIOS = [
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 2000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 600 },
     { role: 'user', content: "I'm interested in learning about your enterprise plan.", delay: 3500 },
     { role: 'assistant', content: "I'd be happy to help with that! Let me pull up the details for our enterprise offering.", delay: 3000, toolCall: { name: 'fetch_pricing', params: { plan: 'enterprise' } } },
     { role: 'assistant', content: "Our enterprise plan includes unlimited seats, dedicated support, and custom integrations. Would you like me to schedule a demo call to discuss your specific needs?", delay: 4000 },
   ],
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 2000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 600 },
     { role: 'user', content: "Hi, I spoke with someone last week about a custom package.", delay: 3500 },
     { role: 'assistant', content: "Of course! Let me pull up your conversation history.", delay: 3000, toolCall: { name: 'crm_lookup', params: { type: 'recent_interactions' } } },
     { role: 'assistant', content: "I found your previous conversation with our team. You were discussing a 50-seat package with API access. Would you like to continue where you left off?", delay: 4000 },
   ],
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 2000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 600 },
     { role: 'user', content: "I'd like to schedule a demo with your team.", delay: 3500 },
     { role: 'assistant', content: "I'll check our team's availability right now.", delay: 3000, toolCall: { name: 'schedule_demo', params: { duration: '30min' } } },
     { role: 'assistant', content: "I have availability tomorrow at 2pm or Thursday at 10am. Which works better for you?", delay: 4000 },
   ],
   [
-    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 2000 },
+    { role: 'assistant', content: "Hello! I'm Alex, your AI revenue assistant. How can I help you today?", delay: 600 },
     { role: 'user', content: "Can you send me a quote for 25 users?", delay: 3500 },
     { role: 'assistant', content: "Absolutely! Let me generate a custom quote for you.", delay: 3000, toolCall: { name: 'generate_quote', params: { seats: 25, plan: 'business' } } },
     { role: 'assistant', content: "I've prepared a quote for 25 seats on our Business plan. I'm sending it to your email now. The quote is valid for 30 days.", delay: 4000 },
