@@ -65,8 +65,8 @@ export default function ConversationTranscript({
 }) {
   const scrollRef = useRef(null);
 
-  // With flex-col-reverse, scroll position 0 shows the latest content (visual bottom)
-  // Auto-scroll happens naturally when new content arrives at position 0
+  // With flex-col justify-end, messages align to the bottom of the container
+  // Empty space appears at the top, scroll up to see history
 
   // Accent colors for agent messages
   const accentStyles = {
@@ -106,7 +106,7 @@ export default function ConversationTranscript({
   return (
     <div
       ref={scrollRef}
-      className="demo-transcript flex flex-col-reverse gap-3 flex-1 min-h-0 overflow-y-auto"
+      className="demo-transcript flex flex-col justify-end gap-3 flex-1 min-h-0 overflow-y-auto"
       style={scrollbarStyles}
       role="log"
       aria-label="Conversation transcript"
@@ -132,35 +132,15 @@ export default function ConversationTranscript({
         }
       `}</style>
 
-      {/* Streaming message - appears first in reverse order = visual bottom */}
-      <StateTransition show={isStreaming} enter="slide-up" duration="fast">
-        <div className="flex justify-start">
-          <div className={`max-w-[85%] ${accent.bg} border-2 ${accent.border}`}>
-            {/* Streaming header */}
-            <div className="flex items-center justify-between gap-4 px-3 py-1.5 border-b border-slate-700/50">
-              <span className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase">
-                <AgentIcon className={`w-4 h-4 ${accent.iconColor}`} />
-                Agent
-              </span>
-              <ThinkingState variant="typing" size="sm" label="Agent is typing" />
-            </div>
+      {/* Empty state - at top when no content */}
+      {messages.length === 0 && !isStreaming && (
+        <p className="text-center text-slate-500 text-sm py-4 font-mono">
+          Conversation will appear here...
+        </p>
+      )}
 
-            {/* Streaming content */}
-            <div className="px-3 py-2">
-              <p className="text-sm text-white leading-relaxed">
-                {streamingText}
-                <span className="inline-block w-2 h-4 bg-brand-blue ml-0.5 animate-thinking-typing motion-reduce:animate-none" />
-              </p>
-            </div>
-
-            {/* Accent bar */}
-            <div className={`h-0.5 ${accent.accent}`}></div>
-          </div>
-        </div>
-      </StateTransition>
-
-      {/* Message list - reversed so newest appears at visual bottom */}
-      {[...messages].reverse().map((message, index) => (
+      {/* Message list - chronological order, newest at bottom */}
+      {messages.map((message, index) => (
         <StateTransition
           key={message.id}
           show={true}
@@ -235,12 +215,32 @@ export default function ConversationTranscript({
         </StateTransition>
       ))}
 
-      {/* Empty state - appears last in reversed order = visual top when no content */}
-      {messages.length === 0 && !isStreaming && (
-        <p className="text-center text-slate-500 text-sm py-4 font-mono">
-          Conversation will appear here...
-        </p>
-      )}
+      {/* Streaming message - at bottom after all messages */}
+      <StateTransition show={isStreaming} enter="slide-up" duration="fast">
+        <div className="flex justify-start">
+          <div className={`max-w-[85%] ${accent.bg} border-2 ${accent.border}`}>
+            {/* Streaming header */}
+            <div className="flex items-center justify-between gap-4 px-3 py-1.5 border-b border-slate-700/50">
+              <span className="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase">
+                <AgentIcon className={`w-4 h-4 ${accent.iconColor}`} />
+                Agent
+              </span>
+              <ThinkingState variant="typing" size="sm" label="Agent is typing" />
+            </div>
+
+            {/* Streaming content */}
+            <div className="px-3 py-2">
+              <p className="text-sm text-white leading-relaxed">
+                {streamingText}
+                <span className="inline-block w-2 h-4 bg-brand-blue ml-0.5 animate-thinking-typing motion-reduce:animate-none" />
+              </p>
+            </div>
+
+            {/* Accent bar */}
+            <div className={`h-0.5 ${accent.accent}`}></div>
+          </div>
+        </div>
+      </StateTransition>
     </div>
   );
 }

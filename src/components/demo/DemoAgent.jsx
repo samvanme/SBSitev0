@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Waveform, ThinkingState, StateTransition } from '../animations';
-import ToolCallDisplay from './ToolCallDisplay';
 import ConversationTranscript from './ConversationTranscript';
 
 /**
@@ -39,7 +38,6 @@ export default function DemoAgent({
 }) {
   const [textInput, setTextInput] = useState('');
   const [showTextInput, setShowTextInput] = useState(false);
-  const [isToolsExpanded, setIsToolsExpanded] = useState(true);
 
   // Agent styling based on type
   const agentStyles = {
@@ -169,36 +167,6 @@ export default function DemoAgent({
           <div className="mt-3 flex items-center gap-2">
             <ThinkingState variant="dots" size="sm" label="Processing request" />
             <span className="text-xs text-slate-500 font-mono">Processing...</span>
-          </div>
-        </StateTransition>
-
-        {/* Tool call display */}
-        <StateTransition show={!!currentToolCall} enter="slide-up" duration="fast">
-          <div className="mt-4">
-            <button
-              onClick={() => setIsToolsExpanded(!isToolsExpanded)}
-              className="flex items-center gap-2 text-xs text-slate-500 hover:text-white transition-colors mb-2"
-            >
-              <svg
-                className={`w-3 h-3 transform transition-transform motion-reduce:transition-none ${
-                  isToolsExpanded ? 'rotate-90' : ''
-                }`}
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="font-mono uppercase">Tool Calls</span>
-            </button>
-            <StateTransition show={isToolsExpanded && !!currentToolCall} enter="slide-down" duration="fast">
-              {currentToolCall && (
-                <ToolCallDisplay
-                  toolName={currentToolCall.name}
-                  params={currentToolCall.params}
-                  status={currentToolCall.status}
-                />
-              )}
-            </StateTransition>
           </div>
         </StateTransition>
 
