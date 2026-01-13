@@ -203,7 +203,7 @@ export default function DemoAgent({
         </StateTransition>
 
         {/* Conversation transcript - grows to fill available space */}
-        <div className="mt-4 flex-1 flex flex-col min-h-0">
+        <div className="mt-4 flex-1 min-h-0 overflow-hidden">
           <ConversationTranscript
             messages={messages}
             isStreaming={isStreaming}
