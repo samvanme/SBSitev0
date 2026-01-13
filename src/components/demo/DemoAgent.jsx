@@ -154,7 +154,7 @@ export default function DemoAgent({
   const isActiveState = ['listening', 'processing', 'responding'].includes(status);
 
   return (
-    <div className="relative bg-slate-900/50 border-0 sm:border-2 border-white/10 hover:border-white/20 transition-colors sm:h-[calc(100vh-180px)] sm:min-h-[500px] flex flex-col overflow-hidden">
+    <div className="relative bg-slate-900/50 border-0 sm:border-2 border-white/10 hover:border-white/20 transition-colors min-h-[400px] sm:h-[calc(100vh-180px)] sm:min-h-[500px] flex flex-col overflow-hidden">
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${style.accent}`}></div>
 
