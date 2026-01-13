@@ -200,12 +200,13 @@ export default function DemoController({
       const message = script[step];
 
       simulationTimerRef.current = setTimeout(() => {
-        // Add message
+        // Add message (include tool call if present for transcript artifact)
         const newMsg = {
           id: `sim-${agent}-${currentScenarioIdx}-${step}`,
           role: message.role,
           content: message.content,
           timestamp: Date.now(),
+          ...(message.toolCall && { toolCall: { ...message.toolCall, status: 'complete' } }),
         };
         setAgentMessages((prev) => ({
           ...prev,
