@@ -131,11 +131,11 @@ export default function DemoAgent({
   const isActiveState = ['listening', 'processing', 'responding'].includes(status);
 
   return (
-    <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors min-h-[400px] flex flex-col">
+    <div className="relative bg-slate-900/50 border-2 border-white/10 hover:border-white/20 transition-colors min-h-[400px] max-h-[600px] flex flex-col">
       {/* Left accent bar */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 ${style.accent}`}></div>
 
-      <div className="p-4 pl-6 sm:p-6 sm:pl-8 flex flex-col flex-1">
+      <div className="p-4 pl-6 sm:p-6 sm:pl-8 flex flex-col flex-1 overflow-hidden">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div>
