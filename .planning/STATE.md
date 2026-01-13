@@ -3,8 +3,8 @@
 ## Current Status
 
 **Milestone**: 1 — AI-Native Website Launch
-**Phase**: 5 — AI Demo Integration
-**Plan**: 05-01.1 (Demo UI Refinements)
+**Phase**: 6 — Content & Lead Flow
+**Plan**: 06-01 (Content Messaging & Lead Form UI)
 **Status**: Complete
 
 ## Progress
@@ -15,27 +15,28 @@
 | 2 | Design System | ✅ Complete |
 | 3 | Section Redesign | ✅ Complete |
 | 4 | Animation & State System | ✅ Complete |
-| 5 | AI Demo Integration | 🔄 In Progress (05-01, 05-01.1 complete) |
-| 6 | Content & Lead Flow | ⏳ Pending |
+| 5 | AI Demo Integration | ✅ Complete (05-01, 05-01.1) |
+| 6 | Content & Lead Flow | 🔄 In Progress (06-01 complete) |
 | 7 | Polish & Launch | ⏳ Pending |
 
 ## Context
 
 ### Last Action
-Plan 05-01.1 executed (Demo UI Refinements). 4 tasks, 4 commits:
-- Dark theme scrollbar styling (WebKit + Firefox support)
-- Bottom-anchored chat flow using flex-col-reverse
-- Minimalist avatar icons for agent/user distinction
-- 8 rotating tool call scenarios (4 per agent)
+Plan 06-01 executed (Content Messaging & Lead Form UI). 7 tasks, 7 commits:
+- Partner messaging in Hero ("AI Integration Partner", partnership subheadline)
+- HowItWorks now 4 steps (Discover → Design → Deploy → Support)
+- Industry verticals added to UseCases (Healthcare, Finance, Professional Services, Real Estate, Legal)
+- ConsultationForm component with brutalist styling and mock submission
+- Form integrated into FinalCTA with phone as primary
+- CTA language refined ("Watch It Work", "Book Discovery Call", "Explore This System")
+- useFormState hook for reusable form management
 
 ### Next Action
-Plan Phase 5-02 (Backend Integration):
-- Decide on connection mode: WebSocket vs polling
-- Choose voice API: Web Speech API vs cloud service
-- Select AI backend for agent responses
-- Implement real connection and tool calls
+Choose next step:
+1. **Plan 06-02**: Backend form integration (serverless, CRM, or form service)
+2. **Phase 7**: Polish & Launch (accessibility, performance, final cleanup)
 
-OR skip to Phase 6 if demo improvements can wait.
+Backend form handling is optional if phone calls are primary conversion.
 
 ### Blockers
 None
@@ -73,6 +74,8 @@ None
 - 2026-01-12: Phase 5-01 planned (10 tasks)
 - 2026-01-13: Phase 5-01 executed (10 tasks, 10 commits)
 - 2026-01-13: Plan 05-01.1 executed (4 tasks, 4 commits)
+- 2026-01-13: Plan 06-01 planned (7 tasks)
+- 2026-01-13: Plan 06-01 executed (7 tasks, 7 commits)
 
 ---
 *Last updated: 2026-01-13*

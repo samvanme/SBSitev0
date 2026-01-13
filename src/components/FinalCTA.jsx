@@ -1,4 +1,5 @@
 import { CONTACT } from '../constants/config';
+import ConsultationForm from './ConsultationForm';
 
 export default function FinalCTA() {
   return (
@@ -44,6 +45,18 @@ export default function FinalCTA() {
           <span className="hidden sm:inline">CRM Integration · Full Attribution · Governed Systems</span>
           <span className="sm:hidden">CRM · Attribution · Governed</span>
         </p>
+
+        {/* Divider */}
+        <div className="flex items-center gap-4 my-10 sm:my-14 max-w-lg mx-auto">
+          <div className="flex-1 h-px bg-white/10"></div>
+          <span className="text-mono text-slate-500 text-xs sm:text-sm whitespace-nowrap">or start a conversation</span>
+          <div className="flex-1 h-px bg-white/10"></div>
+        </div>
+
+        {/* Consultation Form */}
+        <div className="max-w-md mx-auto">
+          <ConsultationForm />
+        </div>
       </div>
     </section>
   );

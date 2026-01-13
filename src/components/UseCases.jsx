@@ -5,6 +5,7 @@ export default function UseCases() {
       count: 'Phase 1',
       title: 'Inbound Lead Handling',
       accent: 'blue',
+      industries: ['Real Estate', 'Finance', 'Professional Services'],
       features: [
         'CRM-integrated call routing',
         'Lead qualification + scoring',
@@ -22,6 +23,7 @@ export default function UseCases() {
       count: 'Phase 2',
       title: 'Customer Support Intake',
       accent: 'white',
+      industries: ['Healthcare', 'Finance', 'Legal'],
       features: [
         'Intelligent routing + escalation',
         'Quality scoring per conversation',
@@ -39,6 +41,7 @@ export default function UseCases() {
       count: 'Phase 3',
       title: 'Candidate Screening',
       accent: 'white',
+      industries: ['Professional Services', 'Healthcare', 'Finance'],
       features: [
         'Interview scheduling automation',
         'Candidate qualification calls',
@@ -52,6 +55,8 @@ export default function UseCases() {
       ),
     },
   ];
+
+  const allIndustries = ['Healthcare', 'Finance', 'Professional Services', 'Real Estate', 'Legal'];
 
   return (
     <section id="systems" className="section-brutal overflow-hidden relative">
@@ -101,9 +106,21 @@ export default function UseCases() {
                 </span>
 
                 {/* Title */}
-                <h3 className="font-bold text-white text-lg sm:text-xl mb-4">
+                <h3 className="font-bold text-white text-lg sm:text-xl mb-3">
                   {useCase.title}
                 </h3>
+
+                {/* Industry Badges */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {useCase.industries.map((industry, i) => (
+                    <span
+                      key={i}
+                      className="text-mono text-xs px-2 py-0.5 border border-white/20 text-slate-400"
+                    >
+                      {industry}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Features List */}
                 <ul className="space-y-2 sm:space-y-3 mb-6">
@@ -117,7 +134,7 @@ export default function UseCases() {
 
                 {/* CTA Link */}
                 <a href="#book" className="inline-flex items-center gap-2 text-white font-bold text-sm group/link">
-                  <span className="border-b-2 border-white/50 group-hover/link:border-white transition-colors">Learn More</span>
+                  <span className="border-b-2 border-white/50 group-hover/link:border-white transition-colors">Explore This System</span>
                   <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                   </svg>
@@ -125,6 +142,21 @@ export default function UseCases() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Industries We Serve */}
+        <div className="sm:pl-6 lg:pl-8 mt-10 sm:mt-16">
+          <p className="text-mono text-slate-500 text-xs sm:text-sm mb-4">Industries We Serve</p>
+          <div className="flex flex-wrap gap-2 sm:gap-3">
+            {allIndustries.map((industry, i) => (
+              <span
+                key={i}
+                className="text-mono text-sm sm:text-base px-3 sm:px-4 py-2 border-2 border-white/10 text-white hover:border-white/30 transition-colors"
+              >
+                {industry}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>
