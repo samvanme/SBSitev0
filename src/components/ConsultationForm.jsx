@@ -57,13 +57,15 @@ export default function ConsultationForm() {
           name="name"
           value={values.name}
           onChange={handleChange}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+          aria-invalid={errors.name ? 'true' : undefined}
           className={`w-full bg-slate-900 text-white px-4 py-3 border-2 ${
             errors.name ? 'border-red-500' : 'border-white/20 focus:border-white'
           } focus:outline-none transition-colors`}
           placeholder="Your name"
         />
         {errors.name && (
-          <p className="text-red-500 text-mono text-xs mt-1">{errors.name}</p>
+          <p id="name-error" className="text-red-500 text-mono text-xs mt-1" role="alert">{errors.name}</p>
         )}
       </div>
 
@@ -78,13 +80,15 @@ export default function ConsultationForm() {
           name="email"
           value={values.email}
           onChange={handleChange}
+          aria-describedby={errors.email ? 'email-error' : undefined}
+          aria-invalid={errors.email ? 'true' : undefined}
           className={`w-full bg-slate-900 text-white px-4 py-3 border-2 ${
             errors.email ? 'border-red-500' : 'border-white/20 focus:border-white'
           } focus:outline-none transition-colors`}
           placeholder="you@company.com"
         />
         {errors.email && (
-          <p className="text-red-500 text-mono text-xs mt-1">{errors.email}</p>
+          <p id="email-error" className="text-red-500 text-mono text-xs mt-1" role="alert">{errors.email}</p>
         )}
       </div>
 
@@ -115,13 +119,15 @@ export default function ConsultationForm() {
           value={values.challenge}
           onChange={handleChange}
           rows={4}
+          aria-describedby={errors.challenge ? 'challenge-error' : undefined}
+          aria-invalid={errors.challenge ? 'true' : undefined}
           className={`w-full bg-slate-900 text-white px-4 py-3 border-2 ${
             errors.challenge ? 'border-red-500' : 'border-white/20 focus:border-white'
           } focus:outline-none transition-colors resize-none`}
           placeholder="Describe the workflow or process you'd like to automate..."
         />
         {errors.challenge && (
-          <p className="text-red-500 text-mono text-xs mt-1">{errors.challenge}</p>
+          <p id="challenge-error" className="text-red-500 text-mono text-xs mt-1" role="alert">{errors.challenge}</p>
         )}
       </div>
 

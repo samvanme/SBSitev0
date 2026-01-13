@@ -8,7 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-slate-950 text-white overflow-hidden">
+    <footer className="relative bg-slate-950 text-white overflow-hidden" aria-label="Footer">
       {/* Top border - brutalist divider */}
       <div className="h-1 bg-white/10"></div>
 
