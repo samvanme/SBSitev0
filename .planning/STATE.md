@@ -5,7 +5,7 @@
 **Milestone**: 1 — AI-Native Website Launch
 **Phase**: 5 — AI Demo Integration
 **Plan**: 05-01 (Interactive Demo Architecture & UI Framework)
-**Status**: Planned
+**Status**: Complete
 
 ## Progress
 
@@ -15,25 +15,32 @@
 | 2 | Design System | ✅ Complete |
 | 3 | Section Redesign | ✅ Complete |
 | 4 | Animation & State System | ✅ Complete |
-| 5 | AI Demo Integration | 🔄 In Progress |
+| 5 | AI Demo Integration | 🔄 In Progress (05-01 complete) |
 | 6 | Content & Lead Flow | ⏳ Pending |
 | 7 | Polish & Launch | ⏳ Pending |
 
 ## Context
 
 ### Last Action
-Phase 5-01 planned (Interactive Demo Architecture & UI Framework). Plan includes:
-- Demo component architecture with state machine (10 tasks)
-- DemoAgent, ToolCallDisplay, ConversationTranscript components
-- useDemoState and useDemoConnection hooks (mock implementation)
-- DemoController for simulated → interactive transition
-- Error/timeout/fallback state handling
+Phase 5-01 executed (Interactive Demo Architecture & UI Framework). 10 tasks, 10 commits:
+- Created demo component architecture documentation
+- Implemented useDemoState hook (finite state machine)
+- Created ToolCallDisplay, ConversationTranscript components
+- Created DemoError, DemoFallback, DemoTimeout components
+- Implemented useDemoConnection hook with mock mode
+- Created DemoAgent component (main interactive card)
+- Created DemoController (orchestrates hybrid demo flow)
+- Refactored VoiceDemo to use new architecture
+- Verified build and lint pass
 
 ### Next Action
-Execute Phase 5-01:
-- Run `/gsd:execute-plan .planning/phases/05-ai-demo-integration/05-01-PLAN.md`
-- Build interactive demo framework with mock backend
-- Backend integration (05-02) planned after infrastructure decision
+Plan Phase 5-02 (Backend Integration):
+- Decide on connection mode: WebSocket vs polling
+- Choose voice API: Web Speech API vs cloud service
+- Select AI backend for agent responses
+- Implement real connection and tool calls
+
+OR skip to Phase 6 if demo improvements can wait.
 
 ### Blockers
 None
@@ -54,6 +61,7 @@ None
 - **Footer**: Simplified links, solid white logo (no gradient)
 - **Animation components**: CSS-first approach to avoid React state complexity
 - **Reduced motion**: All animations respect prefers-reduced-motion with static fallbacks
+- **Demo architecture**: State machine with useDemoState hook, dependency injection for connection
 
 ### Decisions Pending
 - AI backend choice for Phase 5-02 (requires research)
@@ -68,6 +76,7 @@ None
 - 2026-01-12: Phase 3-B executed (10 tasks, 7 commits)
 - 2026-01-12: Phase 4-01 executed (11 tasks, 11 commits)
 - 2026-01-12: Phase 5-01 planned (10 tasks)
+- 2026-01-13: Phase 5-01 executed (10 tasks, 10 commits)
 
 ---
-*Last updated: 2026-01-12*
+*Last updated: 2026-01-13*
